@@ -43,10 +43,12 @@ module.exports = {
 				xl: "868px",
 			},
 		},
-	},
-	extend: {
-		backgroundImage: {
-			"gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+		extend: {
+			backgroundImage: {
+				"gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+				"gradient-radial-t":
+					"radial-gradient(ellipse at top,var(--tw-gradient-stops))",
+			},
 		},
 	},
 	plugins: [require("tailwindcss"), require("autoprefixer")],
