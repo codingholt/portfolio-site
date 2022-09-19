@@ -34,6 +34,15 @@ module.exports = {
 			black: "#000",
 			white: "#fff",
 		},
+		container: {
+			center: true,
+			screens: {
+				sm: "356px",
+				md: "556px",
+				lg: "868px",
+				xl: "868px",
+			},
+		},
 	},
 	extend: {},
 	plugins: [require("tailwindcss"), require("autoprefixer")],
