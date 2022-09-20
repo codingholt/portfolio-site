@@ -10,12 +10,12 @@ const Pages: IPage[] = [
 	{
 		icon: LightBulbOn,
 		name: "Projecten",
-		link: "/",
+		link: "/projecten",
 	},
 	{
 		icon: Flask,
 		name: "Experimenten",
-		link: "/",
+		link: "/experimenten",
 	},
 ];
 
