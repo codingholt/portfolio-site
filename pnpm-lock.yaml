@@ -7,6 +7,7 @@ specifiers:
   autoprefixer: ^10.4.11
   eslint: 8.23.1
   eslint-config-next: 12.3.0
+  iconoir-react: ^5.3.0
   next: 12.3.0
   postcss: ^8.4.16
   react: 18.2.0
@@ -15,6 +16,7 @@ specifiers:
   typescript: 4.8.3
 
 dependencies:
+  iconoir-react: 5.3.0_react@18.2.0
   next: 12.3.0_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -1233,6 +1235,14 @@ packages:
     dependencies:
       function-bind: 1.1.1
     dev: true
+
+  /iconoir-react/5.3.0_react@18.2.0:
+    resolution: {integrity: sha512-nMZWAGASTRafzM2upgZFtOCYT6kXoubknyNpASgyknCqCxzTUh9x2iNgMr3BulBFlG+6C5Xx4ivV2x4J/0i3lg==}
+    peerDependencies:
+      react: ^16.8.6 || ^17 || ^18
+    dependencies:
+      react: 18.2.0
+    dev: false
 
   /ignore/5.2.0:
     resolution: {integrity: sha512-CmxgYGiEPCLhfLnpPp1MoRmifwEIOgjcHXxOBjv7mY96c+eWScsOP9c112ZyLdWHi0FxHjI+4uVhKYp/gcdRmQ==}

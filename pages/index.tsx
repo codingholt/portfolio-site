@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
-import Container from "../components/container";
+import Container from "../components/Container";
+import Navigation from "../components/Navigation";
 
 const Home: NextPage = () => {
 	return (
@@ -21,8 +22,9 @@ const Home: NextPage = () => {
 				Vivamus elementum semper nisi. Aenean vulputate eleifend tellus.
 				Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac,
 				enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a,
-				tellus. Phasellus viverra nul
+				tellus. Phasellus viverra nul.
 			</div>
+			{/* <Navigation /> */}
 		</Container>
 	);
 };
