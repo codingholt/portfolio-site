@@ -1,4 +1,14 @@
-import { Flask, HomeSimpleDoor, LightBulbOn } from "iconoir-react";
+import { link } from "fs";
+import {
+	EmojiBall,
+	Flask,
+	GitHub,
+	GitHubOutline,
+	HomeSimpleDoor,
+	LightBulbOn,
+	Mail,
+	Twitter,
+} from "iconoir-react";
 import { IPage } from "../types";
 
 const Pages: IPage[] = [
@@ -19,4 +29,21 @@ const Pages: IPage[] = [
 	},
 ];
 
-export default Pages;
+const Social: IPage[] = [
+	{
+		icon: GitHub,
+		name: "Github",
+		link: "https://github.com/codingholt",
+	},
+	{
+		icon: Twitter,
+		name: "Twitter",
+		link: "https://twitter.com/codingholt",
+	},
+	{
+		icon: Mail,
+		name: "email",
+		link: "mailto:hey@svennijholt.xyz",
+	},
+];
+export { Pages, Social };
