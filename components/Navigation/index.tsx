@@ -8,7 +8,7 @@ function Navigation({}: {}) {
 			{Pages.map((page, idx) => (
 				<div key={idx}>
 					<Link href={page.link}>
-						<div className="my-1 rounded-md flex py-3 hover:cursor-pointer mr-5">
+						<div className="my-1 rounded-md flex py-3 hover:cursor-pointer pr-5 hover:scale-105 duration-500 hover:bg-gray-100/50">
 							<page.icon className="ml-1" />
 							<div className="ml-2">{page.name}</div>
 						</div>
