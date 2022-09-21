@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+
+const plugin = require("tailwindcss/plugin");
+
 module.exports = {
 	content: [
 		"./pages/**/*.{js,ts,jsx,tsx}",
@@ -51,5 +54,28 @@ module.exports = {
 			},
 		},
 	},
-	plugins: [require("tailwindcss"), require("autoprefixer")],
+	plugins: [
+		require("tailwindcss"),
+		require("autoprefixer"),
+		plugin(function ({ addComponents }) {
+			addComponents({
+				".divider-y": {
+					"@apply h-full w-px bg-black bg-opacity-20 dark:bg-white dark:bg-opacity-10":
+						{},
+				},
+				".divider-x": {
+					"@apply h-px w-full bg-black bg-opacity-20 dark:bg-white dark:bg-opacity-10":
+						{},
+				},
+			});
+		}),
+		plugin(function ({ addBase }) {
+			addBase({
+				hr: {
+					"@apply border-black border-opacity-20 dark:border-white dark:border-opacity-20":
+						{},
+				},
+			});
+		}),
+	],
 };
