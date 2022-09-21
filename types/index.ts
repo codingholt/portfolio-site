@@ -481,3 +481,10 @@ export interface IPage {
 	name: string;
 	link: string;
 }
+
+export interface IProject {
+	name: string;
+	link: string;
+	description: string;
+	img: string;
+}

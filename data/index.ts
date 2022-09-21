@@ -9,7 +9,7 @@ import {
 	Mail,
 	Twitter,
 } from "iconoir-react";
-import { IPage } from "../types";
+import { IPage, IProject } from "../types";
 
 const Pages: IPage[] = [
 	{
@@ -46,4 +46,13 @@ const Social: IPage[] = [
 		link: "mailto:hey@svennijholt.xyz",
 	},
 ];
-export { Pages, Social };
+
+const ProjectData: IProject[] = [
+	{
+		img: "../example/img.png",
+		name: "Test1",
+		link: "https://test.lol",
+		description: "lorem ipsum ahahahahahahahahhaahha",
+	},
+];
+export { Pages, Social, ProjectData };

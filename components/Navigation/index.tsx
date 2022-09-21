@@ -9,7 +9,7 @@ function Navigation({}: {}) {
 	return (
 		<>
 			{/* Desktop */}
-			<div className="ml-5 2xl:ring-1 shadow-md dark:shadow-white/10	 dark:bg-gray-1000 dark:text-white ring-black/10 dark:ring-white/10 rounded-md left-0 hidden 2xl:inline-block 2xl:fixed my-auto top-1/2 -translate-y-1/2">
+			<div className="ml-5 2xl:ring-1 shadow-md dark:shadow-white/10	 dark:bg-gray-1000 dark:text-white ring-black/10 dark:ring-white/10 rounded-md left-0 hidden xl:inline-block xl:fixed my-auto top-1/2 -translate-y-1/2">
 				<Link href="/">
 					<div className="my-1 rounded-md flex py-3 hover:cursor-pointer pr-20 hover:scale-105 duration-500 hover:bg-gray-100/50 pl-5">
 						<ProfileCircled />
@@ -63,7 +63,7 @@ function Navigation({}: {}) {
 				)}
 			</div>
 			{/* Mobile */}
-			<div className="2xl:hidden container mx-auto flex justify-between fixed inset-0 z-10">
+			<div className="xl:hidden container mx-auto flex justify-between fixed inset-0 z-10">
 				{Pages.map((page, idx) => (
 					<div key={idx}>
 						<Link href={page.link}>

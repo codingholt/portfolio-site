@@ -7,4 +7,8 @@
 		font-size: theme("fontSize.4xl");
 		font-weight: theme("fontWeight.bold");
 	}
+	.heading-2 {
+		font-size: theme("fontSize.2xl");
+		font-weight: theme("fontWeight.bold");
+	}
 }
