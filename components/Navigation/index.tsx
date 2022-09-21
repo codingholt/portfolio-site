@@ -1,8 +1,11 @@
 import Link from "next/link";
 import { Pages, Social } from "../../data";
-import { HalfMoon, MoonSat, ProfileCircled } from "iconoir-react";
-
+import { HalfMoon, MoonSat, ProfileCircled, SunLight } from "iconoir-react";
+import { themeAtom } from "../../store";
+import { useAtom } from "jotai";
 function Navigation({}: {}) {
+	const [theme, setTheme] = useAtom(themeAtom);
+
 	return (
 		<>
 			{/* Desktop */}
@@ -61,7 +64,17 @@ function Navigation({}: {}) {
 					</div>
 				))}
 				<div className="divider-y h-6 mt-2" />
-				<HalfMoon className="hover:scale-105 mt-2" />
+				{theme === "light" ? (
+					<HalfMoon
+						className="hover:scale-105 mt-2"
+						onClick={() => setTheme("dark")}
+					/>
+				) : (
+					<SunLight
+						className="hover:scale-105 mt-2"
+						onClick={() => setTheme("light")}
+					/>
+				)}
 			</div>
 		</>
 	);
