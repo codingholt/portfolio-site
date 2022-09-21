@@ -9,11 +9,11 @@ function Navigation({}: {}) {
 	return (
 		<>
 			{/* Desktop */}
-			<div className="ml-5 2xl:ring-1 shadow-md ring-black/10 rounded-md left-0 hidden 2xl:inline-block 2xl:fixed my-auto top-1/2 -translate-y-1/2">
+			<div className="ml-5 2xl:ring-1 shadow-md dark:shadow-white/10	 dark:bg-gray-1000 dark:text-white ring-black/10 dark:ring-white/10 rounded-md left-0 hidden 2xl:inline-block 2xl:fixed my-auto top-1/2 -translate-y-1/2">
 				<Link href="/">
 					<div className="my-1 rounded-md flex py-3 hover:cursor-pointer pr-20 hover:scale-105 duration-500 hover:bg-gray-100/50 pl-5">
 						<ProfileCircled />
-						<div className="ml-2">Sven Nijholt</div>
+						<div className="ml-2">Sven</div>
 					</div>
 				</Link>
 				<hr />
@@ -28,17 +28,39 @@ function Navigation({}: {}) {
 					</div>
 				))}
 				<hr />
-				<div className="divder-x w-18 h-1"></div>
 				{Social.map((page, idx) => (
 					<div key={idx}>
-						<Link href={page.link}>
+						<a
+							target="_blank"
+							href={page.link}
+							rel="noopener noreferrer"
+						>
 							<div className="my-1 rounded-md flex py-3 hover:cursor-pointer pr-20 hover:scale-105 duration-500 hover:bg-gray-100/50 pl-5">
 								<page.icon className="" />
 								<div className="ml-2">{page.name}</div>
 							</div>
-						</Link>
+						</a>
 					</div>
 				))}
+				<hr />
+
+				{theme === "light" ? (
+					<div
+						className="my-1 rounded-md flex py-3 hover:cursor-pointer pr-20 hover:scale-105 duration-500 hover:bg-gray-100/50 pl-5"
+						onClick={() => setTheme("dark")}
+					>
+						<HalfMoon className="hover:scale-105 mt-2" />
+						<div className="m-2">Dark</div>
+					</div>
+				) : (
+					<div
+						className="my-1 rounded-md flex py-3 hover:cursor-pointer pr-20 hover:scale-105 duration-500 hover:bg-gray-100/50 pl-5"
+						onClick={() => setTheme("light")}
+					>
+						<SunLight className="hover:scale-105 mt-2" />
+						<div className="m-2">Light</div>
+					</div>
+				)}
 			</div>
 			{/* Mobile */}
 			<div className="2xl:hidden container mx-auto flex justify-between fixed inset-0 z-10">
@@ -56,11 +78,15 @@ function Navigation({}: {}) {
 
 				{Social.map((page, idx) => (
 					<div key={idx}>
-						<Link href={page.link}>
+						<a
+							target="_blank"
+							href={page.link}
+							rel="noopener noreferrer"
+						>
 							<div className="hover:scale-105 mt-2">
 								<page.icon className="" />
 							</div>
-						</Link>
+						</a>
 					</div>
 				))}
 				<div className="divider-y h-6 mt-2" />
