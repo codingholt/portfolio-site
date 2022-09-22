@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Pages, Social } from "../../data";
-import { HalfMoon, MoonSat, ProfileCircled, SunLight } from "iconoir-react";
+import { HalfMoon, ProfileCircled, SunLight } from "iconoir-react";
 import { themeAtom } from "../../store";
 import { useAtom } from "jotai";
 function Navigation({}: {}) {

@@ -24,7 +24,6 @@ const Home: NextPage = () => {
 				enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a,
 				tellus. Phasellus viverra nul.
 			</div>
-			{/* <Navigation /> */}
 		</Container>
 	);
 };

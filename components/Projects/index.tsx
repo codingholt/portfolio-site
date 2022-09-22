@@ -13,7 +13,7 @@ function Projects({ name, link, img, description }: IProject) {
 		<div className="grid grid-cols-1 md:grid-cols-3 ">
 			<div className="col-span-2 h-[450px] relative rounded-md ring-4 ring-white drop-shadow-md mr-5">
 				<Image
-					src="https://picsum.photos/200/300"
+					src=""
 					loading="lazy"
 					className="rounded-md"
 					fill={true}
