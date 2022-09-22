@@ -39,7 +39,7 @@ function Projects({ name, link, img, description }: IProject) {
 			{/* Mobile */}
 			<div className="block relative lg:hidden mx-5 my-5 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 hover:opacity-80 transform transition duration-500 hover:scale-105 hover:cursor-pointer">
 				<div className="z-10">
-					<div className="m-5 relative h-56">
+					<div className="m-5 relative h-64">
 						<Image
 							className="rounded-lg relative object-cover"
 							src={img}
