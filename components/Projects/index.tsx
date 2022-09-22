@@ -12,7 +12,7 @@ function Projects({ name, link, img, description }: IProject) {
 	return (
 		<>
 			<div className="lg:grid hidden md:grid-cols-3 my-5 ">
-				<div className="col-span-2 h-[450px] relative rounded-md ring-4 ring-white drop-shadow-md mr-5">
+				<div className="col-span-2 h-[450px] relative rounded-md ring-4 ring-white dark:ring-black shadow-lg dark:shadow-white/40 mr-5">
 					<Image
 						src={img}
 						loading="lazy"
@@ -24,7 +24,10 @@ function Projects({ name, link, img, description }: IProject) {
 						}
 					/>
 				</div>
-				<div className="rounded-md ring-4 ml-5 ring-white bg-white drop-shadow-md col-end-4 h-[450px]">
+				<div
+					className="rounded-md ring-4 ml-5 ring-white dark:ring-black bg-white 
+				dark:bg-black shadow-lg dark:shadow-white/20 col-end-4 h-[450px]"
+				>
 					<span className="heading-2">{name}</span>
 					<a href={link} rel="noopener noreferrer">
 						<div className="flex text-gray hover:scale-105 duration-500 hover:text-gray-500">
