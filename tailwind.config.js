@@ -76,5 +76,6 @@ module.exports = {
 				},
 			});
 		}),
+		require("@tailwindcss/aspect-ratio"),
 	],
 };
