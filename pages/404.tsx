@@ -1,5 +1,6 @@
 import { Computer } from "iconoir-react";
 import type { NextPage } from "next";
+import Button from "../components/Button";
 import Container from "../components/Container";
 import Navigation from "../components/Navigation";
 
@@ -19,6 +20,7 @@ const Home: NextPage = () => {
 				voorheen wel een pagina. Als je terug naar home wil gaan klik
 				dan op knop hieronder
 			</div>
+			<Button buttonText="Home" to="/" extraStyle="mt-2" />
 		</Container>
 	);
 };
