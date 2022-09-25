@@ -3,6 +3,7 @@ import type { AppProps } from "next/app";
 import { themeAtom } from "../store";
 import { useAtom } from "jotai";
 import { useEffect } from "react";
+import { SessionProvider } from "next-auth/react";
 
 function MyApp({ Component, pageProps }: AppProps) {
 	const [theme, setTheme] = useAtom(themeAtom);
