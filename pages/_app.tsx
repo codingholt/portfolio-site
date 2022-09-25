@@ -17,9 +17,11 @@ function MyApp({ Component, pageProps }: AppProps) {
 	}, []);
 
 	return (
-		<div className={theme}>
-			<Component {...pageProps} />
-		</div>
+		<SessionProvider session={pageProps.session}>
+			<div className={theme}>
+				<Component {...pageProps} />
+			</div>
+		</SessionProvider>
 	);
 }
 
