@@ -3,6 +3,7 @@ import type { NextPage } from "next";
 import Button from "../components/Button";
 import Container from "../components/Container";
 import Navigation from "../components/Navigation";
+import { signIn } from "next-auth/react";
 
 const LogIn: NextPage = () => {
 	return (
@@ -50,6 +51,7 @@ const LogIn: NextPage = () => {
 					</div>
 				</div>
 			</div>
+			<button onClick={() => signIn("email")}>Sign in with Email</button>
 			<Button buttonText="Login" to="/" extraStyle="mt-2" />
 		</Container>
 	);
