@@ -5,6 +5,7 @@ import { ProjectData } from "../data";
 import Projects from "../components/Projects";
 import { link } from "fs";
 import Image from "next/image";
+import ProjectsEven from "../components/ProjectsEven";
 
 const Projecten: NextPage = () => {
 	return (
@@ -19,16 +20,27 @@ const Projecten: NextPage = () => {
 				</span>
 			</div>
 
-			{ProjectData.map((item, idx) => (
-				<div key={idx}>
-					<Projects
-						name={item.name}
-						link={item.link}
-						img={item.img}
-						description={item.description}
-					/>
-				</div>
-			))}
+			{ProjectData.map((item, idx) =>
+				idx % 2 ? (
+					<div key={idx}>
+						<ProjectsEven
+							name={item.name}
+							link={item.link}
+							img={item.img}
+							description={item.description}
+						/>
+					</div>
+				) : (
+					<div key={idx}>
+						<Projects
+							name={item.name}
+							link={item.link}
+							img={item.img}
+							description={item.description}
+						/>
+					</div>
+				)
+			)}
 		</Container>
 	);
 };
