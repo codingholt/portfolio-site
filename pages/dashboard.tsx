@@ -12,6 +12,7 @@ const Protected: NextPage = (): JSX.Element => {
 
 	if (status === "authenticated")
 		return (
+			// Some Component
 			<div>
 				Deze pagina is alleen voor speciale mensen. zoals jij,
 				{JSON.stringify(data.user?.name, null, 2)}
