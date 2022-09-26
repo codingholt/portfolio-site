@@ -1,9 +1,14 @@
 import "../styles/globals.css";
-import type { AppProps } from "next/app";
+import type { AppProps as NextAppProps } from "next/app";
 import { themeAtom } from "../store";
 import { useAtom } from "jotai";
 import { useEffect } from "react";
 import { SessionProvider } from "next-auth/react";
+import { Session } from "inspector";
+
+type AppProps<P = any> = {
+	pageProps: P;
+} & Omit<NextAppProps<P>, "pageProps">;
 
 function MyApp({ Component, pageProps }: AppProps) {
 	const [theme, setTheme] = useAtom(themeAtom);
