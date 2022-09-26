@@ -2,7 +2,7 @@ import "../styles/globals.css";
 import type { AppProps as NextAppProps } from "next/app";
 import { themeAtom } from "../store";
 import { useAtom } from "jotai";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { SessionProvider } from "next-auth/react";
 
 type AppProps<P = any> = {
