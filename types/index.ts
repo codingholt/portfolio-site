@@ -483,8 +483,9 @@ export interface IPage {
 }
 
 export interface IProject {
-	name: string;
-	link: string;
-	description: string;
-	img: string;
+	id?: number;
+	name?: string;
+	link?: string;
+	description?: string;
+	img?: string;
 }

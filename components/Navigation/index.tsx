@@ -19,10 +19,12 @@ function Navigation({}: {}) {
 				<hr />
 				{Pages.map((page, idx) => (
 					<div key={idx}>
-						<Link href={page.link}>
-							<div className="my-1 rounded-md flex py-3 hover:cursor-pointer pr-20 hover:scale-105 duration-500 hover:bg-gray-100/50 pl-5">
-								<page.icon className="" />
-								<div className="ml-2">{page.name}</div>
+						<Link href={page.link} tabIndex={idx}>
+							<div className="hover:cursor-pointer hover:bg-gray-100/50 rounded-md pl-5">
+								<span className="my-1  flex py-3  pr-20 hover:scale-110 origin-left duration-500">
+									<page.icon className="" />
+									<div className="ml-2">{page.name}</div>
+								</span>
 							</div>
 						</Link>
 					</div>
@@ -35,9 +37,11 @@ function Navigation({}: {}) {
 							href={page.link}
 							rel="noopener noreferrer"
 						>
-							<div className="my-1 rounded-md flex py-3 hover:cursor-pointer pr-20 hover:scale-105 duration-500 hover:bg-gray-100/50 pl-5">
-								<page.icon className="" />
-								<div className="ml-2">{page.name}</div>
+							<div className="hover:cursor-pointer hover:bg-gray-100/50 rounded-md pl-5">
+								<span className="my-1  flex py-3  pr-20 hover:scale-105 origin-left duration-500">
+									<page.icon className="" />
+									<div className="ml-2">{page.name}</div>
+								</span>
 							</div>
 						</a>
 					</div>

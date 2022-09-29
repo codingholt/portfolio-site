@@ -1,38 +1,78 @@
 import { CursorPointer } from "iconoir-react";
 import { NextPage } from "next";
 import { useSession } from "next-auth/react";
+import { AppProps } from "next/app";
 import Router from "next/router";
-import { useEffect } from "react";
+import { eventNames } from "process";
+import {
+	useEffect,
+	useState,
+	FormEventHandler,
+	ReactPropTypes,
+	ComponentProps,
+} from "react";
+import AddItemForm from "../components/AddItemForm";
 import Container from "../components/Container";
 import { ProjectData } from "../data";
+import { IProject } from "../types";
 
 const Protected: NextPage = (): JSX.Element => {
+	const [projectInfo, setProjectInfo] = useState<IProject | undefined>({
+		id: 0,
+		name: undefined,
+		link: undefined,
+		description: undefined,
+		img: undefined,
+	});
+	// const handleChange = (key: keyof IProject, event: any) => {
+	// 	setProjectInfo({
+	// 		...projectInfo,
+	// 		key.key: event.value,
+	// 	});
+	// };
+	// const handleChange = (key: any, event: any) => {
+	// 	setProjectInfo({
+	// 		...projectInfo,
+	// 		key: event.target,
+	// 	});
+	// };
+	const [formModalOpen, setFormModalOpen] = useState<boolean>(false);
 	const { status, data } = useSession();
 
 	useEffect(() => {
 		if (status === "unauthenticated") Router.replace("/login");
 	}, [status]);
 
+	const handleSubmit: FormEventHandler = async (e) => {
+		e.preventDefault();
+
+		// send to server api route...
+	};
+
 	const DashboardTable = () => (
 		<table className="">
-			<tr>
-				<th>Id</th>
-				<th>Name</th>
-				<th>description</th>
-				<th>link</th>
-				<th>img</th>
-			</tr>
-			{ProjectData.map((item, idx) => {
-				return (
-					<tr key={idx} className="h-5 even:bg-gray-100  px-5">
-						<td>{"000" + idx}</td>
-						<td>{item.name}</td>
-						<td className="line-clamp-1">{item.description}</td>
-						<td>{item.link}</td>
-						<td>{item.img}</td>
-					</tr>
-				);
-			})}
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Name</th>
+					<th>description</th>
+					<th>link</th>
+					<th>img</th>
+				</tr>
+			</thead>
+			<tbody>
+				{ProjectData.map((item, idx) => {
+					return (
+						<tr key={idx} className="h-5 even:bg-gray-100  px-5">
+							<td>{"000" + idx}</td>
+							<td>{item.name}</td>
+							<td className="line-clamp-1">{item.description}</td>
+							<td>{item.link}</td>
+							<td>{item.img}</td>
+						</tr>
+					);
+				})}
+			</tbody>
 		</table>
 	);
 	const DashboardHeader = () => (
@@ -44,17 +84,29 @@ const Protected: NextPage = (): JSX.Element => {
 			</p>
 		</div>
 	);
+
 	if (status === "authenticated")
 		return (
 			// Some Component
 			<Container>
 				<DashboardHeader />
 				<DashboardTable />
+				<button
+					className="mt-2  rounded-md px-4 py-2 bg-accent-500 text-white"
+					onClick={() => setFormModalOpen(true)}
+				>
+					{" "}
+					Open{" "}
+				</button>
+
+				{formModalOpen ? (
+					<AddItemForm
+						onSubmit={handleSubmit}
+						setState={setProjectInfo}
+						state={projectInfo}
+					/>
+				) : null}
 			</Container>
-			// <div>
-			// 	Deze pagina is alleen voor speciale mensen. zoals jij,
-			// 	{JSON.stringify(data.user?.name, null, 2)}
-			// </div>
 		);
 
 	return <div>loading</div>;
