@@ -27,6 +27,18 @@ const AddItemForm = ({
 									state={state}
 									setState={setState}
 								/>
+								<InputItem
+									placeholder="Description"
+									valueToUpdate="description"
+									state={state}
+									setState={setState}
+								/>
+								<InputItem
+									placeholder="Link"
+									valueToUpdate="link"
+									state={state}
+									setState={setState}
+								/>
 							</div>
 							<div className="relative bg-inherit my-4">
 								<button
