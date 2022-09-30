@@ -3,6 +3,7 @@ import { NextPage } from "next";
 import { useSession } from "next-auth/react";
 import { AppProps } from "next/app";
 import Router from "next/router";
+import Image from "next/image";
 import { eventNames } from "process";
 import {
 	useEffect,
@@ -18,7 +19,7 @@ import { IProject } from "../types";
 
 const Protected: NextPage = (): JSX.Element => {
 	const [projectInfo, setProjectInfo] = useState<IProject | undefined>({
-		id: 0,
+		id: NaN,
 		name: undefined,
 		link: undefined,
 		description: undefined,
@@ -46,6 +47,7 @@ const Protected: NextPage = (): JSX.Element => {
 	const handleSubmit: FormEventHandler = async (e) => {
 		e.preventDefault();
 
+		console.log(projectInfo);
 		// send to server api route...
 	};
 
@@ -68,7 +70,7 @@ const Protected: NextPage = (): JSX.Element => {
 							<td>{item.name}</td>
 							<td className="line-clamp-1">{item.description}</td>
 							<td>{item.link}</td>
-							<td>{item.img}</td>
+							<td>{item.img?.name}</td>
 						</tr>
 					);
 				})}

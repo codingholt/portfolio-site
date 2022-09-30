@@ -487,5 +487,12 @@ export interface IProject {
 	name?: string;
 	link?: string;
 	description?: string;
-	img?: string;
+	img?: File;
+}
+
+export interface IProjectWithoutIMG {
+	id?: number;
+	name?: string;
+	link?: string;
+	description?: string;
 }

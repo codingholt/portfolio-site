@@ -15,11 +15,12 @@ const AddItemForm = ({
 		<div className="inset-0 fixed overflow-y-auto z-10 bg-black bg-opacity-25">
 			<div className="flex min-h-full items-center justify-center p-4 text-center ">
 				<div
-					className="w-full h-72 max-w-md transform 
+					className="w-full  max-w-md transform 
                 backdrop-filter backdrop-blur-lg bg-opacity-70 overflow-visible rounded-2xl bg-white dark:bg-gray-800 dark:bg-opacity-50 p-6 text-left align-middle shadow-xl transition-all"
 				>
+					<h3 className="heading-2">Add Project</h3>
 					<form onSubmit={onSubmit}>
-						<div className="bg-white dark:bg-black my-4 rounded-lg">
+						<div className=" my-4 pb-4 rounded-lg">
 							<div>
 								<InputItem
 									placeholder="Naam"
@@ -33,14 +34,31 @@ const AddItemForm = ({
 									state={state}
 									setState={setState}
 								/>
-								<InputItem
+								{/* <InputItem
 									placeholder="Link"
 									valueToUpdate="link"
 									state={state}
 									setState={setState}
+								/> */}
+								<input
+									type="file"
+									name="image"
+									id="image"
+									className="text-sm text-grey-500
+									file:mr-5 file:py-2 file:px-6
+									file:rounded-md file:border-0
+									file:text-sm file:font-medium
+									file:bg-accent-500/25 file:text-accent-700
+									hover:file:cursor-pointer hover:file:bg-accent-500/50
+									hover:file:text-accent-900"
+									onChange={(e) =>
+										setState({
+											...state,
+											img: e.target.files![0],
+										})
+									}
 								/>
-							</div>
-							<div className="relative bg-inherit my-4">
+
 								<button
 									type="submit"
 									value="sumbit"
