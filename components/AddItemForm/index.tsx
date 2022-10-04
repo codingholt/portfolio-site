@@ -11,6 +11,15 @@ const AddItemForm = ({
 	state: IProject | undefined;
 	setState: Dispatch<SetStateAction<IProject | undefined>>;
 }) => {
+	const fileToDataUri = async (file: File) => {
+		new Promise((resolve, reject) => {
+			const reader = new FileReader();
+			reader.onload = (event) => {
+				resolve(event.target?.result);
+			};
+			reader.readAsDataURL(file);
+		});
+	};
 	return (
 		<div className="inset-0 fixed overflow-y-auto z-10 bg-black bg-opacity-25">
 			<div className="flex min-h-full items-center justify-center p-4 text-center ">
@@ -19,7 +28,7 @@ const AddItemForm = ({
                 backdrop-filter backdrop-blur-lg bg-opacity-70 overflow-visible rounded-2xl bg-white dark:bg-gray-800 dark:bg-opacity-50 p-6 text-left align-middle shadow-xl transition-all"
 				>
 					<h3 className="heading-2">Add Project</h3>
-					<form onSubmit={onSubmit}>
+					<form onSubmit={onSubmit} encType="multipart/form-data">
 						<div className=" my-4 pb-4 rounded-lg">
 							<div>
 								<InputItem
@@ -34,12 +43,13 @@ const AddItemForm = ({
 									state={state}
 									setState={setState}
 								/>
-								{/* <InputItem
+
+								<InputItem
 									placeholder="Link"
 									valueToUpdate="link"
 									state={state}
 									setState={setState}
-								/> */}
+								/>
 								<input
 									type="file"
 									name="image"
@@ -51,11 +61,19 @@ const AddItemForm = ({
 									file:bg-accent-500/25 file:text-accent-700
 									hover:file:cursor-pointer hover:file:bg-accent-500/50
 									hover:file:text-accent-900"
-									onChange={(e) =>
-										setState({
-											...state,
-											img: e.target.files![0],
-										})
+									onChange={
+										async (e) =>
+											console.log(
+												await fileToDataUri(
+													e.target.files![0]
+												)
+											)
+										// setState({
+										// 	...state,
+										// 	img: await getBase64(
+										// 		e.target.files![0]
+										// 	),
+										// })
 									}
 								/>
 

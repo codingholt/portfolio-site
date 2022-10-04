@@ -18,25 +18,8 @@ import { ProjectData } from "../data";
 import { IProject } from "../types";
 
 const Protected: NextPage = (): JSX.Element => {
-	const [projectInfo, setProjectInfo] = useState<IProject | undefined>({
-		id: NaN,
-		name: undefined,
-		link: undefined,
-		description: undefined,
-		img: undefined,
-	});
-	// const handleChange = (key: keyof IProject, event: any) => {
-	// 	setProjectInfo({
-	// 		...projectInfo,
-	// 		key.key: event.value,
-	// 	});
-	// };
-	// const handleChange = (key: any, event: any) => {
-	// 	setProjectInfo({
-	// 		...projectInfo,
-	// 		key: event.target,
-	// 	});
-	// };
+	const [projectInfo, setProjectInfo] = useState<IProject | undefined>();
+
 	const [formModalOpen, setFormModalOpen] = useState<boolean>(false);
 	const { status, data } = useSession();
 
@@ -46,9 +29,21 @@ const Protected: NextPage = (): JSX.Element => {
 
 	const handleSubmit: FormEventHandler = async (e) => {
 		e.preventDefault();
-
-		console.log(projectInfo);
+		console.log(projectInfo?.img);
 		// send to server api route...
+		const pushData = await fetch("/api/projects", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				name: projectInfo?.name,
+				description: projectInfo?.description,
+				link: projectInfo?.link,
+				img: projectInfo?.img,
+			}),
+		});
+		console.log(pushData);
 	};
 
 	const DashboardTable = () => (
@@ -108,6 +103,13 @@ const Protected: NextPage = (): JSX.Element => {
 						state={projectInfo}
 					/>
 				) : null}
+				<button
+					className="mt-2  rounded-md px-4 py-2 bg-accent-500 text-white"
+					onClick={() => fetch("/api/projects", { method: "GET" })}
+				>
+					{" "}
+					GET{" "}
+				</button>
 			</Container>
 		);
 
