@@ -2,6 +2,7 @@ import React, { FormEventHandler } from "react";
 import { IProject } from "../../types";
 import { Dispatch, SetStateAction } from "react";
 import { InputItem } from "./input";
+import { stat } from "fs";
 const AddItemForm = ({
 	onSubmit,
 	state,
@@ -11,15 +12,22 @@ const AddItemForm = ({
 	state: IProject | undefined;
 	setState: Dispatch<SetStateAction<IProject | undefined>>;
 }) => {
-	const fileToDataUri = async (file: File) => {
+	const toBase64 = (file: File) =>
 		new Promise((resolve, reject) => {
 			const reader = new FileReader();
-			reader.onload = (event) => {
-				resolve(event.target?.result);
-			};
 			reader.readAsDataURL(file);
+			reader.onload = () => resolve(reader.result);
+			reader.onerror = (error) => reject(error);
 		});
+
+	const setImage = async (image: File) => {
+		setState({
+			...state,
+			img: await toBase64(image),
+		});
+		console.log(state);
 	};
+
 	return (
 		<div className="inset-0 fixed overflow-y-auto z-10 bg-black bg-opacity-25">
 			<div className="flex min-h-full items-center justify-center p-4 text-center ">
@@ -61,19 +69,8 @@ const AddItemForm = ({
 									file:bg-accent-500/25 file:text-accent-700
 									hover:file:cursor-pointer hover:file:bg-accent-500/50
 									hover:file:text-accent-900"
-									onChange={
-										async (e) =>
-											console.log(
-												await fileToDataUri(
-													e.target.files![0]
-												)
-											)
-										// setState({
-										// 	...state,
-										// 	img: await getBase64(
-										// 		e.target.files![0]
-										// 	),
-										// })
+									onChange={(e) =>
+										setImage(e.target.files![0])
 									}
 								/>
 

@@ -29,21 +29,23 @@ const Protected: NextPage = (): JSX.Element => {
 
 	const handleSubmit: FormEventHandler = async (e) => {
 		e.preventDefault();
-		console.log(projectInfo?.img);
+		console.log("submit is fired");
+		// console.log(projectInfo?.img);
 		// send to server api route...
-		const pushData = await fetch("/api/projects", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({
-				name: projectInfo?.name,
-				description: projectInfo?.description,
-				link: projectInfo?.link,
-				img: projectInfo?.img,
-			}),
-		});
-		console.log(pushData);
+		try {
+			console.log(projectInfo);
+			const pushData = await fetch("/api/projects", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(projectInfo),
+			});
+
+			console.log(pushData);
+		} catch (e) {
+			console.log(e);
+		}
 	};
 
 	const DashboardTable = () => (
@@ -65,7 +67,7 @@ const Protected: NextPage = (): JSX.Element => {
 							<td>{item.name}</td>
 							<td className="line-clamp-1">{item.description}</td>
 							<td>{item.link}</td>
-							<td>{item.img?.name}</td>
+							{/* <td>{item.img?.name}</td> */}
 						</tr>
 					);
 				})}

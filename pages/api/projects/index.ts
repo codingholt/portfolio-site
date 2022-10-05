@@ -16,7 +16,8 @@ export default async function index(
 	// Get data from your database
 	const session = await unstable_getServerSession(req, res, authOptions);
 	if (!session) res.status(401).json({ error: "Unauthenticated user" });
-	console.log(req.body.img);
+
+	console.log("server!!!");
 	switch (req.method) {
 		case "GET":
 			// Get data from your database
@@ -25,14 +26,17 @@ export default async function index(
 			break;
 		case "POST":
 			// Update or create data in your database
+
+			const img = Buffer.from(req.body.img, "base64");
 			const project = await prisma.projects.create({
 				data: {
 					name: req.body.name,
 					description: req.body.description,
 					link: req.body.link,
-					image: req.body.img,
+					image: img,
 				},
 			});
+			console.log("succes?!");
 			res.status(200).send(`Succesfull put ${project}`);
 			break;
 		default:
@@ -40,3 +44,8 @@ export default async function index(
 			res.status(405).end(`Method ${req.method} Not Allowed`);
 	}
 }
+export const config = {
+	api: {
+		responseLimit: false,
+	},
+};
