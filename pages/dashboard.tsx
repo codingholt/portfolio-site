@@ -68,6 +68,7 @@ const Protected: NextPage = (): JSX.Element => {
 			body: JSON.stringify(projectData),
 		});
 		const json = await data.json();
+		if (json.succes) setFormModalOpen(false);
 		return await json;
 	}
 
@@ -75,8 +76,6 @@ const Protected: NextPage = (): JSX.Element => {
 
 	const handleSubmit: FormEventHandler = async (e) => {
 		e.preventDefault();
-		console.log("submit is fired");
-		// console.log(projectInfo?.img);
 
 		const imgUrl = await getImgUrl(imageState!);
 		setProjectInfo((projectInfo) => {
@@ -118,7 +117,6 @@ const Protected: NextPage = (): JSX.Element => {
 			</thead>
 			<tbody>
 				{projectInfoFromDB!.map((item, idx) => {
-					console.log(item);
 					return (
 						<tr
 							key={idx}
@@ -134,6 +132,7 @@ const Protected: NextPage = (): JSX.Element => {
 							</td>
 							<td className="break-all truncate w-auto">
 								{item.image}
+								{/* //TODO change type of IProject img to image */}
 							</td>
 						</tr>
 					);
