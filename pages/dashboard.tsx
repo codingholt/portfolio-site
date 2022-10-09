@@ -18,7 +18,13 @@ import { ProjectData } from "../data";
 import { IProject } from "../types";
 
 const Protected: NextPage = (): JSX.Element => {
-	const [projectInfo, setProjectInfo] = useState<IProject | undefined>();
+	const [projectInfo, setProjectInfo] = useState<IProject | undefined>({
+		name: "",
+		description: "",
+		link: "",
+		img: "",
+	});
+	const [imageState, setImageState] = useState<Blob | undefined>(undefined);
 
 	const [formModalOpen, setFormModalOpen] = useState<boolean>(false);
 	const { status, data } = useSession();
@@ -26,28 +32,48 @@ const Protected: NextPage = (): JSX.Element => {
 	useEffect(() => {
 		if (status === "unauthenticated") Router.replace("/login");
 	}, [status]);
+	async function getImgUrl(img: Blob) {
+		const formData = new FormData();
+		formData.append("file", img);
+		formData.append("upload_preset", "uploads-preset");
 
+		const data: any = await fetch(
+			"https://api.cloudinary.com/v1_1/dv2hompuz/image/upload",
+			{
+				method: "POST",
+				body: formData,
+			}
+		);
+		const json = await data.json();
+		return await json.secure_url;
+	}
+
+	async function toDatabase(projectData: IProject) {
+		const data = await fetch("/api/projects", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(projectData),
+		});
+		const json = await data.json();
+		return await json;
+	}
 	const handleSubmit: FormEventHandler = async (e) => {
 		e.preventDefault();
 		console.log("submit is fired");
 		// console.log(projectInfo?.img);
-		// send to server api route...
-		try {
-			console.log(projectInfo);
-			const pushData = await fetch("/api/projects", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify(projectInfo),
-			});
 
-			console.log(pushData);
-		} catch (e) {
-			console.log(e);
-		}
+		const imgUrl = await getImgUrl(imageState!);
+		setProjectInfo((projectInfo) => {
+			const newProjectInfo = {
+				...projectInfo,
+				img: imgUrl,
+			};
+			toDatabase(newProjectInfo);
+			return newProjectInfo;
+		});
 	};
-
 	const DashboardTable = () => (
 		<table className="">
 			<thead>
@@ -100,9 +126,11 @@ const Protected: NextPage = (): JSX.Element => {
 
 				{formModalOpen ? (
 					<AddItemForm
+						setModal={setFormModalOpen}
 						onSubmit={handleSubmit}
 						setState={setProjectInfo}
 						state={projectInfo}
+						setImage={setImageState}
 					/>
 				) : null}
 				<button

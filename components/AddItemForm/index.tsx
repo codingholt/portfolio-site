@@ -2,38 +2,29 @@ import React, { FormEventHandler } from "react";
 import { IProject } from "../../types";
 import { Dispatch, SetStateAction } from "react";
 import { InputItem } from "./input";
-import { stat } from "fs";
 const AddItemForm = ({
+	setModal,
 	onSubmit,
 	state,
 	setState,
+	setImage,
 }: {
 	onSubmit: FormEventHandler;
+	setModal: Dispatch<SetStateAction<boolean>>;
 	state: IProject | undefined;
 	setState: Dispatch<SetStateAction<IProject | undefined>>;
+	setImage: Dispatch<SetStateAction<Blob | undefined>>;
 }) => {
-	const toBase64 = (file: File) =>
-		new Promise((resolve, reject) => {
-			const reader = new FileReader();
-			reader.readAsDataURL(file);
-			reader.onload = () => resolve(reader.result);
-			reader.onerror = (error) => reject(error);
-		});
-
-	const setImage = async (image: File) => {
-		setState({
-			...state,
-			img: await toBase64(image),
-		});
-		console.log(state);
-	};
-
 	return (
-		<div className="inset-0 fixed overflow-y-auto z-10 bg-black bg-opacity-25">
-			<div className="flex min-h-full items-center justify-center p-4 text-center ">
+		<>
+			<div
+				className="inset-0 fixed min-h-full items-center justify-center p-4 text-center overflow-y-auto bg-black bg-opacity-25"
+				onClick={() => setModal(false)}
+			/>
+			<div className="flex">
 				<div
-					className="w-full  max-w-md transform 
-                backdrop-filter backdrop-blur-lg bg-opacity-70 overflow-visible rounded-2xl bg-white dark:bg-gray-800 dark:bg-opacity-50 p-6 text-left align-middle shadow-xl transition-all"
+					className=" w-full -translate-y-1/2
+                backdrop-filter backdrop-blur-lg bg-opacity-70 overflow-visible rounded-2xl bg-white dark:bg-gray-800 dark:bg-opacity-50 p-6 text-left shadow-xl transition-all"
 				>
 					<h3 className="heading-2">Add Project</h3>
 					<form onSubmit={onSubmit} encType="multipart/form-data">
@@ -86,7 +77,7 @@ const AddItemForm = ({
 					</form>
 				</div>
 			</div>
-		</div>
+		</>
 	);
 };
 

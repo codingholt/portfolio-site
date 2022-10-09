@@ -30,6 +30,7 @@ export const InputItem = ({
 							[`${valueToUpdate}`]: e.target.value,
 						})
 					}
+					required={true}
 				/>
 				<label
 					htmlFor={placeholder}

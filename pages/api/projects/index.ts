@@ -27,13 +27,12 @@ export default async function index(
 		case "POST":
 			// Update or create data in your database
 
-			const img = Buffer.from(req.body.img, "base64");
 			const project = await prisma.projects.create({
 				data: {
 					name: req.body.name,
 					description: req.body.description,
 					link: req.body.link,
-					image: img,
+					image: req.body.img,
 				},
 			});
 			console.log("succes?!");

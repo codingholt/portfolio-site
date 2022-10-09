@@ -12,5 +12,5 @@ model projects {
   name        String? @db.VarChar(255)
   description String? @db.MediumText
   link        String? @db.VarChar(255)
-  image       Bytes? @db.LongBlob()
+  image       String? @db.MediumText
 }
