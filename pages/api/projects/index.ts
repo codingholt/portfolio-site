@@ -17,7 +17,6 @@ export default async function index(
 	const session = await unstable_getServerSession(req, res, authOptions);
 	if (!session) res.status(401).json({ error: "Unauthenticated user" });
 
-	console.log("server!!!");
 	switch (req.method) {
 		case "GET":
 			// Get data from your database
@@ -35,8 +34,16 @@ export default async function index(
 					image: req.body.img,
 				},
 			});
-			console.log("succes?!");
-			res.status(200).send(`Succesfull put ${project}`);
+			res.status(200).send({
+				succes: true,
+				new_database_item: {
+					id: project.id,
+					name: project.name,
+					description: project.description,
+					link: project.link,
+					img_url: project.image,
+				},
+			});
 			break;
 		default:
 			res.setHeader("Allow", ["GET", "POST"]);
