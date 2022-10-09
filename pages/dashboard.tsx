@@ -48,7 +48,7 @@ const Protected: NextPage = (): JSX.Element => {
 		return await json.secure_url;
 	}
 
-	async function toDatabase(projectData: IProject) {
+	async function postDatabase(projectData: IProject) {
 		const data = await fetch("/api/projects", {
 			method: "POST",
 			headers: {
@@ -59,6 +59,18 @@ const Protected: NextPage = (): JSX.Element => {
 		const json = await data.json();
 		return await json;
 	}
+
+	async function getDatabase() {
+		const data = await fetch("/api/projects", {
+			method: "GET",
+			headers: {
+				"Content-Type": "application/json",
+			},
+		});
+		const json = await data.json();
+		return await json;
+	}
+
 	const handleSubmit: FormEventHandler = async (e) => {
 		e.preventDefault();
 		console.log("submit is fired");
@@ -70,10 +82,11 @@ const Protected: NextPage = (): JSX.Element => {
 				...projectInfo,
 				img: imgUrl,
 			};
-			toDatabase(newProjectInfo);
+			postDatabase(newProjectInfo);
 			return newProjectInfo;
 		});
 	};
+
 	const DashboardTable = () => (
 		<table className="">
 			<thead>
@@ -110,7 +123,7 @@ const Protected: NextPage = (): JSX.Element => {
 		</div>
 	);
 
-	if (status === "authenticated")
+	if (status === "authenticated") {
 		return (
 			// Some Component
 			<Container>
@@ -121,7 +134,7 @@ const Protected: NextPage = (): JSX.Element => {
 					onClick={() => setFormModalOpen(true)}
 				>
 					{" "}
-					Open{" "}
+					Nieuw Project{" "}
 				</button>
 
 				{formModalOpen ? (
@@ -133,16 +146,16 @@ const Protected: NextPage = (): JSX.Element => {
 						setImage={setImageState}
 					/>
 				) : null}
-				<button
+				{/* <button
 					className="mt-2  rounded-md px-4 py-2 bg-accent-500 text-white"
 					onClick={() => fetch("/api/projects", { method: "GET" })}
 				>
 					{" "}
 					GET{" "}
-				</button>
+				</button> */}
 			</Container>
 		);
-
+	}
 	return <div>loading</div>;
 };
 

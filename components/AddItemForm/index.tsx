@@ -18,17 +18,17 @@ const AddItemForm = ({
 	return (
 		<>
 			<div
-				className="inset-0 fixed min-h-full items-center justify-center p-4 text-center overflow-y-auto bg-black bg-opacity-25"
+				className="inset-0 fixed min-h-full h-screen items-center justify-center p-4 text-center overflow-y-auto bg-black bg-opacity-25"
 				onClick={() => setModal(false)}
 			/>
 			<div className="flex">
 				<div
-					className=" w-full -translate-y-1/2
+					className=" w-full -translate-y-3/4
                 backdrop-filter backdrop-blur-lg bg-opacity-70 overflow-visible rounded-2xl bg-white dark:bg-gray-800 dark:bg-opacity-50 p-6 text-left shadow-xl transition-all"
 				>
 					<h3 className="heading-2">Add Project</h3>
 					<form onSubmit={onSubmit} encType="multipart/form-data">
-						<div className=" my-4 pb-4 rounded-lg">
+						<div className=" my-4 pb-6 rounded-lg">
 							<div>
 								<InputItem
 									placeholder="Naam"
@@ -56,6 +56,7 @@ const AddItemForm = ({
 									className="text-sm text-grey-500
 									file:mr-5 file:py-2 file:px-6
 									file:rounded-md file:border-0
+									w-full
 									file:text-sm file:font-medium
 									file:bg-accent-500/25 file:text-accent-700
 									hover:file:cursor-pointer hover:file:bg-accent-500/50
@@ -68,7 +69,7 @@ const AddItemForm = ({
 								<button
 									type="submit"
 									value="sumbit"
-									className="absolute px-6 py-3 bg-accent-500 text-white rounded-lg hover:cursor-pointer hover:scale-105 duration-500 "
+									className="px-6 py-3 absolute block right-0 mx-6 mb-6 bg-accent-500 text-white rounded-lg hover:cursor-pointer hover:scale-105 duration-500 "
 								>
 									Submit
 								</button>
