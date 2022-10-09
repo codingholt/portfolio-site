@@ -24,6 +24,17 @@ const Protected: NextPage = (): JSX.Element => {
 		link: "",
 		img: "",
 	});
+	const [projectInfoFromDB, setProjectInfoFromDB] = useState<
+		IProject[] | undefined
+	>([
+		{
+			id: 0,
+			name: "",
+			description: "",
+			link: "",
+			img: "",
+		},
+	]);
 	const [imageState, setImageState] = useState<Blob | undefined>(undefined);
 
 	const [formModalOpen, setFormModalOpen] = useState<boolean>(false);
@@ -60,16 +71,7 @@ const Protected: NextPage = (): JSX.Element => {
 		return await json;
 	}
 
-	async function getDatabase() {
-		const data = await fetch("/api/projects", {
-			method: "GET",
-			headers: {
-				"Content-Type": "application/json",
-			},
-		});
-		const json = await data.json();
-		return await json;
-	}
+	async function getDatabase() {}
 
 	const handleSubmit: FormEventHandler = async (e) => {
 		e.preventDefault();
@@ -87,26 +89,52 @@ const Protected: NextPage = (): JSX.Element => {
 		});
 	};
 
+	useEffect(() => {
+		const fetchData = async () => {
+			const data = await fetch("/api/projects", {
+				method: "GET",
+				headers: {
+					"Content-Type": "application/json",
+				},
+			});
+			const json = await data.json();
+
+			setProjectInfoFromDB(json.database_items);
+		};
+
+		fetchData().catch(console.error);
+	}, [setProjectInfoFromDB]);
+
 	const DashboardTable = () => (
-		<table className="">
+		<table className=" table-fixed  	w-full overflow-hidden">
 			<thead>
 				<tr>
-					<th>Id</th>
-					<th>Name</th>
-					<th>description</th>
-					<th>link</th>
-					<th>img</th>
+					<th className="break-all">Id</th>
+					<th className="break-all">Name</th>
+					<th className="break-all">description</th>
+					<th className="break-all">link</th>
+					<th className="break-all">img</th>
 				</tr>
 			</thead>
 			<tbody>
-				{ProjectData.map((item, idx) => {
+				{projectInfoFromDB!.map((item, idx) => {
+					console.log(item);
 					return (
-						<tr key={idx} className="h-5 even:bg-gray-100  px-5">
-							<td>{"000" + idx}</td>
-							<td>{item.name}</td>
-							<td className="line-clamp-1">{item.description}</td>
-							<td>{item.link}</td>
-							{/* <td>{item.img?.name}</td> */}
+						<tr
+							key={idx}
+							className="h-5 even:bg-gray-100/50 even:dark:bg-gray-800 max-w-full px-5"
+						>
+							<td className="break-all w-5">{item.id}</td>
+							<td className="break-all w-auto">{item.name}</td>
+							<td className="break-all w-auto">
+								{item.description}
+							</td>
+							<td className="break-all line-clamp-1 w-auto">
+								{item.link}
+							</td>
+							<td className="break-all truncate w-auto">
+								{item.image}
+							</td>
 						</tr>
 					);
 				})}
@@ -146,13 +174,6 @@ const Protected: NextPage = (): JSX.Element => {
 						setImage={setImageState}
 					/>
 				) : null}
-				{/* <button
-					className="mt-2  rounded-md px-4 py-2 bg-accent-500 text-white"
-					onClick={() => fetch("/api/projects", { method: "GET" })}
-				>
-					{" "}
-					GET{" "}
-				</button> */}
 			</Container>
 		);
 	}

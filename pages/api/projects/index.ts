@@ -4,6 +4,7 @@ import { unstable_getServerSession } from "next-auth/next";
 import { PrismaClient, Prisma, projects } from "@prisma/client";
 import { IProject } from "../../../types";
 import { link, read } from "fs";
+import { json } from "stream/consumers";
 const prisma = new PrismaClient();
 // Get project data from DB
 interface ExtendedNextApiRequest extends NextApiRequest {
@@ -21,7 +22,19 @@ export default async function index(
 		case "GET":
 			// Get data from your database
 			const projects = await prisma.projects.findMany();
-			console.log(projects);
+			res.status(200).send({
+				succes: true,
+				// database_items: projects.map((item, idx) => {
+				// 	JSON.stringify({
+				// 		id: item.id,
+				// 		name: item.name,
+				// 		description: item.description,
+				// 		link: item.link,
+				// 		img_url: item.image,
+				// 	});
+				// }),
+				database_items: projects,
+			});
 			break;
 		case "POST":
 			// Update or create data in your database
