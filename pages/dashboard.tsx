@@ -95,34 +95,33 @@ const Protected: NextPage = (): JSX.Element => {
 	}, [setProjectInfoFromDB]);
 
 	const DashboardTable = () => (
-		<table className=" table-fixed  	w-full overflow-hidden">
+		<table className=" table-fixed border-spacing-y-1.5	border-separate	w-full overflow-hidden">
 			<thead>
 				<tr>
-					<th className="break-all">Id</th>
-					<th className="break-all">Name</th>
-					<th className="break-all">description</th>
-					<th className="break-all">link</th>
-					<th className="break-all">img</th>
+					<th className="break-all">id</th>
+					<th className="break-all">Naam</th>
+					<th className="break-all">Beschrijving</th>
+					<th className="break-all">Link</th>
+					<th className="break-all">Afbeelding</th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody className="">
 				{projectInfoFromDB!.map((item, idx) => {
 					return (
 						<tr
 							key={idx}
-							className="h-5 even:bg-gray-100/50 even:dark:bg-gray-800 max-w-full px-5"
+							className=" even:bg-gray-100/50 even:dark:bg-gray-800 max-w-full hover:bg-accent-200/50 even:hover:bg-accent-400/50 dark:even:hover:bg-accent-400/50"
 						>
-							<td className="break-all w-5">{item.id}</td>
-							<td className="break-all w-auto">{item.name}</td>
-							<td className="break-all w-auto">
-								{item.description}
+							<td className="break-all rounded-l-md">
+								{item.id}
 							</td>
-							<td className="break-all line-clamp-1 w-auto">
+							<td className="break-all ">{item.name}</td>
+							<td className="break-all ">{item.description}</td>
+							<td className="break-all line-clamp-1 ">
 								{item.link}
 							</td>
-							<td className="break-all truncate w-auto">
+							<td className="break-all truncate rounded-r-md">
 								{item.image}
-								{/* //TODO change type of IProject img to image */}
 							</td>
 						</tr>
 					);
