@@ -12,11 +12,11 @@ function Projects({ name, link, image, description }: IProject) {
 	return (
 		<>
 			<div className="lg:grid hidden md:grid-cols-3 my-5 ">
-				<div className="col-span-2 h-[450px] relative rounded-md ring-4 ring-white dark:ring-black shadow-lg dark:shadow-white/40 mr-5">
+				<div className="col-span-2 h-[450px] overflow-hidden relative rounded-md ring-4 ring-white dark:ring-black shadow-lg dark:shadow-white/40 mr-5">
 					<Image
 						src={image!}
 						loading="lazy"
-						className="rounded-md"
+						className="rounded-md object-cover	"
 						fill={true}
 						alt={
 							"Afbeelding ter illustratie van het project: " +

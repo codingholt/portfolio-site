@@ -5,7 +5,13 @@ import Router from "next/router";
 import { useEffect, useState, FormEventHandler } from "react";
 import AddItemForm from "../components/AddItemForm";
 import Container from "../components/Container";
+import EditItemFrom from "../components/EditItemForm";
 import { IProject } from "../types";
+
+interface EditIProject {
+	show: boolean;
+	idx: number;
+}
 
 const Protected: NextPage = (): JSX.Element => {
 	const [projectInfo, setProjectInfo] = useState<IProject | undefined>({
@@ -26,10 +32,14 @@ const Protected: NextPage = (): JSX.Element => {
 		},
 	]);
 	const [imageState, setImageState] = useState<Blob | undefined>(undefined);
-
 	const [formModalOpen, setFormModalOpen] = useState<boolean>(false);
-	const { status, data } = useSession();
+	const [editformModalOpen, setEditFormModalOpen] = useState<EditIProject>({
+		show: false,
+		idx: 0,
+	});
 
+	const { status, data } = useSession();
+	console.log(editformModalOpen);
 	useEffect(() => {
 		if (status === "unauthenticated") Router.replace("/login");
 	}, [status]);
@@ -62,8 +72,6 @@ const Protected: NextPage = (): JSX.Element => {
 		return await json;
 	}
 
-	async function getDatabase() {}
-
 	const handleSubmit: FormEventHandler = async (e) => {
 		e.preventDefault();
 
@@ -77,7 +85,13 @@ const Protected: NextPage = (): JSX.Element => {
 			return newProjectInfo;
 		});
 	};
-
+	function EditProject(idx: number) {
+		// console.log(projectInfoFromDB[idx].name);
+		setEditFormModalOpen({
+			show: true,
+			idx: idx,
+		});
+	}
 	useEffect(() => {
 		const fetchData = async () => {
 			const data = await fetch("/api/projects", {
@@ -95,39 +109,47 @@ const Protected: NextPage = (): JSX.Element => {
 	}, [setProjectInfoFromDB]);
 
 	const DashboardTable = () => (
-		<table className=" table-fixed border-spacing-y-1.5	border-separate	w-full overflow-hidden">
-			<thead>
-				<tr>
-					<th className="break-all">id</th>
-					<th className="break-all">Naam</th>
-					<th className="break-all">Beschrijving</th>
-					<th className="break-all">Link</th>
-					<th className="break-all">Afbeelding</th>
-				</tr>
-			</thead>
-			<tbody className="">
-				{projectInfoFromDB!.map((item, idx) => {
-					return (
-						<tr
-							key={idx}
-							className=" even:bg-gray-100/50 even:dark:bg-gray-800 max-w-full hover:bg-accent-200/50 even:hover:bg-accent-400/50 dark:even:hover:bg-accent-400/50"
-						>
-							<td className="break-all rounded-l-md">
-								{item.id}
-							</td>
-							<td className="break-all ">{item.name}</td>
-							<td className="break-all ">{item.description}</td>
-							<td className="break-all line-clamp-1 ">
-								{item.link}
-							</td>
-							<td className="break-all truncate rounded-r-md">
-								{item.image}
-							</td>
-						</tr>
-					);
-				})}
-			</tbody>
-		</table>
+		<>
+			<table className=" table table-fixed border-spacing-y-1.5	border-separate	w-full overflow-hidden">
+				<thead className="table-header-group">
+					<tr className="table-row">
+						<th className="table-cell break-all">id</th>
+						<th className=" table-cell break-all">Naam</th>
+						<th className=" table-cell break-all">Beschrijving</th>
+						<th className="break-all">Link</th>
+						<th className="break-all">Afbeelding</th>
+					</tr>
+				</thead>
+				<tbody className="">
+					{projectInfoFromDB!.map((item, idx) => {
+						return (
+							<tr
+								key={idx}
+								className=" even:bg-gray-100/50 group even:dark:bg-gray-800 max-w-full table-row hover:bg-accent-200/50 even:hover:bg-accent-400/50 dark:even:hover:bg-accent-400/50"
+								onClick={() => EditProject(idx)}
+							>
+								<td className="break-all table-cell rounded-l-md px-1">
+									{item.id}
+								</td>
+								<td className="break-all table-cell ">
+									{item.name}
+								</td>
+								<td className="break-all table-cell ">
+									{item.description}
+								</td>
+								<td className="break-all table-cell -clamp-1 ">
+									{item.link}
+								</td>
+								<td className="break-all table-cell truncate rounded-r-md ">
+									{item.image}
+								</td>
+							</tr>
+						);
+					})}
+				</tbody>
+			</table>
+			<div className="text-gray-500">Edit</div>
+		</>
 	);
 	const DashboardHeader = () => (
 		<div>
@@ -159,6 +181,17 @@ const Protected: NextPage = (): JSX.Element => {
 						onSubmit={handleSubmit}
 						setState={setProjectInfo}
 						state={projectInfo}
+						setImage={setImageState}
+					/>
+				) : null}
+
+				{editformModalOpen.show ? (
+					<EditItemFrom
+						setModal={setEditFormModalOpen}
+						idx={editformModalOpen.idx}
+						onSubmit={handleSubmit}
+						setState={setProjectInfo}
+						state={projectInfoFromDB![editformModalOpen.idx]}
 						setImage={setImageState}
 					/>
 				) : null}
