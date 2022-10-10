@@ -487,7 +487,7 @@ export interface IProject {
 	name?: string;
 	link?: string;
 	description?: string;
-	img?: any;
+	image?: string;
 }
 
 export interface IProjectWithoutIMG {

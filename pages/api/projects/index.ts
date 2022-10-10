@@ -24,15 +24,6 @@ export default async function index(
 			const projects = await prisma.projects.findMany();
 			res.status(200).send({
 				succes: true,
-				// database_items: projects.map((item, idx) => {
-				// 	JSON.stringify({
-				// 		id: item.id,
-				// 		name: item.name,
-				// 		description: item.description,
-				// 		link: item.link,
-				// 		img_url: item.image,
-				// 	});
-				// }),
 				database_items: projects,
 			});
 			break;
@@ -44,7 +35,7 @@ export default async function index(
 					name: req.body.name,
 					description: req.body.description,
 					link: req.body.link,
-					image: req.body.img,
+					image: req.body.image,
 				},
 			});
 			res.status(200).send({

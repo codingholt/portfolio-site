@@ -22,7 +22,7 @@ const Protected: NextPage = (): JSX.Element => {
 		name: "",
 		description: "",
 		link: "",
-		img: "",
+		image: "",
 	});
 	const [projectInfoFromDB, setProjectInfoFromDB] = useState<
 		IProject[] | undefined
@@ -32,7 +32,7 @@ const Protected: NextPage = (): JSX.Element => {
 			name: "",
 			description: "",
 			link: "",
-			img: "",
+			image: "",
 		},
 	]);
 	const [imageState, setImageState] = useState<Blob | undefined>(undefined);
