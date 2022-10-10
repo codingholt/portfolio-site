@@ -1,6 +1,5 @@
 import type { NextPage } from "next";
 import Container from "../components/Container";
-import Navigation from "../components/Navigation";
 import { IntroText } from "../data";
 
 const Home: NextPage = () => {

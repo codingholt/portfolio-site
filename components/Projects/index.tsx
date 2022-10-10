@@ -6,7 +6,7 @@
 import { Link } from "iconoir-react";
 import Image from "next/future/image";
 import { IProject } from "../../types";
-function Projects({ name, link, img, description }: IProject) {
+function Projects({ name, link, image, description }: IProject) {
 	// const [theme, setTheme] = useAtom(themeAtom);
 
 	return (
@@ -14,7 +14,7 @@ function Projects({ name, link, img, description }: IProject) {
 			<div className="lg:grid hidden md:grid-cols-3 my-5 ">
 				<div className="col-span-2 h-[450px] relative rounded-md ring-4 ring-white dark:ring-black shadow-lg dark:shadow-white/40 mr-5">
 					<Image
-						src={img}
+						src={image!}
 						loading="lazy"
 						className="rounded-md"
 						fill={true}
@@ -45,7 +45,7 @@ function Projects({ name, link, img, description }: IProject) {
 					<div className="m-5 relative h-64">
 						<Image
 							className="rounded-lg relative object-cover"
-							src={img}
+							src={image!}
 							fill={true}
 							// width={1000}
 							// height={500}r

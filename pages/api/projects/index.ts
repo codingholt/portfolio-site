@@ -1,12 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { authOptions } from "../auth/[...nextauth]";
 import { unstable_getServerSession } from "next-auth/next";
-import { PrismaClient, Prisma, projects } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 import { IProject } from "../../../types";
-import { link, read } from "fs";
-import { json } from "stream/consumers";
+
 const prisma = new PrismaClient();
-// Get project data from DB
 interface ExtendedNextApiRequest extends NextApiRequest {
 	body: IProject;
 }
@@ -14,13 +12,11 @@ export default async function index(
 	req: ExtendedNextApiRequest,
 	res: NextApiResponse
 ) {
-	// Get data from your database
 	const session = await unstable_getServerSession(req, res, authOptions);
 	if (!session) res.status(401).json({ error: "Unauthenticated user" });
 
 	switch (req.method) {
 		case "GET":
-			// Get data from your database
 			const projects = await prisma.projects.findMany();
 			res.status(200).send({
 				succes: true,
@@ -28,8 +24,6 @@ export default async function index(
 			});
 			break;
 		case "POST":
-			// Update or create data in your database
-
 			const project = await prisma.projects.create({
 				data: {
 					name: req.body.name,

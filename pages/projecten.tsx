@@ -3,8 +3,6 @@ import Container from "../components/Container";
 import { LightBulbOn } from "iconoir-react";
 import { ProjectData } from "../data";
 import Projects from "../components/Projects";
-import { link } from "fs";
-import Image from "next/image";
 import ProjectsEven from "../components/ProjectsEven";
 
 const Projecten: NextPage = () => {
@@ -26,7 +24,7 @@ const Projecten: NextPage = () => {
 						<ProjectsEven
 							name={item.name}
 							link={item.link}
-							img={item.img}
+							image={item.image}
 							description={item.description}
 						/>
 					</div>
@@ -35,7 +33,7 @@ const Projecten: NextPage = () => {
 						<Projects
 							name={item.name}
 							link={item.link}
-							img={item.img}
+							image={item.image}
 							description={item.description}
 						/>
 					</div>

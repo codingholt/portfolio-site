@@ -1,20 +1,10 @@
 import { CursorPointer } from "iconoir-react";
 import { NextPage } from "next";
 import { useSession } from "next-auth/react";
-import { AppProps } from "next/app";
 import Router from "next/router";
-import Image from "next/image";
-import { eventNames } from "process";
-import {
-	useEffect,
-	useState,
-	FormEventHandler,
-	ReactPropTypes,
-	ComponentProps,
-} from "react";
+import { useEffect, useState, FormEventHandler } from "react";
 import AddItemForm from "../components/AddItemForm";
 import Container from "../components/Container";
-import { ProjectData } from "../data";
 import { IProject } from "../types";
 
 const Protected: NextPage = (): JSX.Element => {

@@ -1,6 +1,5 @@
-import { Computer, LockedWindow } from "iconoir-react";
+import { LockedWindow } from "iconoir-react";
 import type { NextPage } from "next";
-import Button from "../components/Button";
 import Container from "../components/Container";
 
 import { signIn } from "next-auth/react";
