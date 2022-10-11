@@ -73,6 +73,22 @@ const Protected: NextPage = (): JSX.Element => {
 		return await json;
 	}
 
+	async function putDatabase(projectData: IProject) {
+		console.log(JSON.stringify(projectData));
+		const data = await fetch(`/api/projects/${editProjectInfo?.id}`, {
+			method: "PUT",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(projectData),
+		});
+		const json = await data.json();
+		if (json.succes) {
+			setEditFormModalOpen({ idx: editformModalOpen.idx, show: false });
+		}
+		return await json;
+	}
+
 	const handleSubmit: FormEventHandler = async (e) => {
 		e.preventDefault();
 
@@ -80,9 +96,24 @@ const Protected: NextPage = (): JSX.Element => {
 		setProjectInfo((projectInfo) => {
 			const newProjectInfo = {
 				...projectInfo,
-				img: imgUrl,
+				image: imgUrl,
 			};
 			postDatabase(newProjectInfo);
+			return newProjectInfo;
+		});
+	};
+
+	const handleEditSubmit: FormEventHandler = async (e) => {
+		e.preventDefault();
+
+		const imgUrl = await getImgUrl(imageState!);
+		seteditProjectInfo((editProjectInfo) => {
+			const newProjectInfo = {
+				...editProjectInfo,
+				image: imgUrl,
+			};
+			console.log(newProjectInfo);
+			putDatabase(newProjectInfo);
 			return newProjectInfo;
 		});
 	};
@@ -189,7 +220,7 @@ const Protected: NextPage = (): JSX.Element => {
 					<EditItemFrom
 						setModal={setEditFormModalOpen}
 						idx={editformModalOpen.idx}
-						onSubmit={handleSubmit}
+						onSubmit={handleEditSubmit}
 						setState={seteditProjectInfo}
 						state={editProjectInfo}
 						setImage={setImageState}
