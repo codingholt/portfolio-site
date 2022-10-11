@@ -18,7 +18,7 @@ const LogIn: NextPage = () => {
 		});
 	};
 	return (
-		<Container color="accent">
+		<Container>
 			<div className="heading">
 				<p className="mt-12">Login.</p>
 			</div>

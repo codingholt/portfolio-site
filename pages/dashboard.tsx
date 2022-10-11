@@ -117,15 +117,6 @@ const Protected: NextPage = (): JSX.Element => {
 			return newProjectInfo;
 		});
 	};
-
-	const handleDelete = async () => {
-		const fetchDel = await fetch(`api/project/${editProjectInfo?.id}`, {
-			method: "DELETE",
-		});
-		const res = await fetchDel.json();
-		return res as JSON;
-	};
-
 	function editProject(idx: number) {
 		seteditProjectInfo(projectInfoFromDB![editformModalOpen.idx]);
 		setEditFormModalOpen({
@@ -204,7 +195,7 @@ const Protected: NextPage = (): JSX.Element => {
 	if (status === "authenticated") {
 		return (
 			// Some Component
-			<Container color="accent">
+			<Container>
 				<DashboardHeader />
 				<DashboardTable />
 				<button
@@ -227,7 +218,6 @@ const Protected: NextPage = (): JSX.Element => {
 
 				{editformModalOpen.show ? (
 					<EditItemFrom
-						onDelete={handleDelete}
 						setModal={setEditFormModalOpen}
 						idx={editformModalOpen.idx}
 						onSubmit={handleEditSubmit}

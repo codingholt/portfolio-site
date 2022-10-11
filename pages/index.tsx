@@ -4,7 +4,7 @@ import { IntroText } from "../data";
 
 const Home: NextPage = () => {
 	return (
-		<Container color="accent">
+		<Container>
 			<div className="heading">
 				<p>Sven.</p>
 				<p>Sofware Developer.</p>

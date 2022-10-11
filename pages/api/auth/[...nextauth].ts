@@ -32,7 +32,7 @@ export const authOptions: NextAuthOptions = {
 	],
 	pages: {
 		signIn: "/auth/signin",
-		error: "/error",
+		// error: '/auth/error',
 		// signOut: '/auth/signout'
 	},
 	callbacks: {
