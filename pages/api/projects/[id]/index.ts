@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { PrismaClient, Prisma, projects } from "@prisma/client";
-import { IProject } from "../../../../types";
+import { PrismaClient } from "@prisma/client";
+
 import { authOptions } from "../../auth/[...nextauth]";
 import { unstable_getServerSession } from "next-auth";
 const prisma = new PrismaClient();
@@ -8,8 +8,7 @@ const prisma = new PrismaClient();
 export default async function index(req: NextApiRequest, res: NextApiResponse) {
 	const session = await unstable_getServerSession(req, res, authOptions);
 	const { id } = req.query;
-	// Get data from your database
-	console.log(req.body);
+
 	switch (req.method) {
 		case "GET":
 			const getProject = await prisma.projects
@@ -53,7 +52,34 @@ export default async function index(req: NextApiRequest, res: NextApiResponse) {
 				},
 			});
 			break;
-	}
+		case "DELETE":
+			if (!session) {
+				res.status(401).json({ error: "Unauthenticated user" });
+			}
+			console.log("DEL?!");
+			const delProject = await prisma.projects
+				.delete({
+					where: {
+						id: +id!,
+					},
+				})
+				.catch((e) =>
+					res.status(500).send(`Internal Sever Error (500): ${e}`)
+				);
 
-	res.status(200).send("bye");
+			res.status(200).send({
+				succes: true,
+				deleted_database_item: {
+					id: delProject?.id,
+					name: delProject?.name,
+					description: delProject?.description,
+					link: delProject?.link,
+					img_url: delProject?.image,
+				},
+			});
+			break;
+		default:
+			res.setHeader("Allow", ["GET", "PUT", "DELETE"]);
+			res.status(405).end(`Method ${req.method} Not Allowed`);
+	}
 }

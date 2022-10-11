@@ -102,6 +102,16 @@ const Protected: NextPage = (): JSX.Element => {
 			return newProjectInfo;
 		});
 	};
+	const handleDelete = async () => {
+		const fetchDel = await fetch(`/api/projects/${editProjectInfo?.id}`, {
+			method: "DELETE",
+		});
+		const json = await fetchDel.json();
+		if (json.succes) {
+			setEditFormModalOpen({ idx: editformModalOpen.idx, show: false });
+		}
+		return json as JSON;
+	};
 
 	const handleEditSubmit: FormEventHandler = async (e) => {
 		e.preventDefault();
@@ -118,11 +128,11 @@ const Protected: NextPage = (): JSX.Element => {
 		});
 	};
 	function editProject(idx: number) {
-		seteditProjectInfo(projectInfoFromDB![editformModalOpen.idx]);
 		setEditFormModalOpen({
 			show: true,
 			idx: idx,
 		});
+		seteditProjectInfo(projectInfoFromDB![idx]);
 	}
 	useEffect(() => {
 		const fetchData = async () => {
@@ -218,6 +228,7 @@ const Protected: NextPage = (): JSX.Element => {
 
 				{editformModalOpen.show ? (
 					<EditItemFrom
+						onDelete={handleDelete}
 						setModal={setEditFormModalOpen}
 						idx={editformModalOpen.idx}
 						onSubmit={handleEditSubmit}
