@@ -11,6 +11,7 @@ interface EditIProject {
 
 const EditItemFrom = ({
 	setModal,
+	onDelete,
 	onSubmit,
 	idx,
 	state,
@@ -18,6 +19,7 @@ const EditItemFrom = ({
 	setImage,
 }: {
 	onSubmit: FormEventHandler;
+	onDelete: () => Promise<JSON>;
 	idx: number;
 	setModal: Dispatch<SetStateAction<EditIProject>>;
 	state: IProject | undefined;
@@ -83,7 +85,16 @@ const EditItemFrom = ({
 									<button
 										type="submit"
 										value="sumbit"
-										className="px-6 py-3 bg-red-500/80 text-white rounded-lg hover:cursor-pointer hover:scale-105 duration-500 "
+										className="px-6 py-3 bg-red-500/50
+										hover:bg-red-500 text-white rounded-lg hover:cursor-pointer hover:scale-105 duration-500 "
+										onClick={() => onDelete}
+									>
+										delete
+									</button>
+									<button
+										type="submit"
+										value="sumbit"
+										className="px-6 py-3 bg-red-500/80 hover:bg-red-500 text-white rounded-lg hover:cursor-pointer hover:scale-105 duration-500 "
 										onClick={() =>
 											setModal({
 												idx: idx,

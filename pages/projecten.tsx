@@ -7,7 +7,7 @@ import ProjectsEven from "../components/ProjectsEven";
 
 const Projecten: NextPage = () => {
 	return (
-		<Container>
+		<Container color="accent">
 			<div className="heading">
 				<p className="mt-12">Projecten.</p>
 			</div>

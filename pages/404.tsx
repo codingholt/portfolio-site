@@ -5,7 +5,7 @@ import Container from "../components/Container";
 
 const Home: NextPage = () => {
 	return (
-		<Container>
+		<Container color="accent">
 			<div className="heading">
 				<p>Oh, nee!</p>
 				<p>Pagina niet gevonden - 404</p>
