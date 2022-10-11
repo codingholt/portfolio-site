@@ -31,6 +31,7 @@ const Protected: NextPage = (): JSX.Element => {
 			image: "",
 		},
 	]);
+	const [editProjectInfo, seteditProjectInfo] = useState<IProject>();
 	const [imageState, setImageState] = useState<Blob | undefined>(undefined);
 	const [formModalOpen, setFormModalOpen] = useState<boolean>(false);
 	const [editformModalOpen, setEditFormModalOpen] = useState<EditIProject>({
@@ -39,7 +40,7 @@ const Protected: NextPage = (): JSX.Element => {
 	});
 
 	const { status, data } = useSession();
-	console.log(editformModalOpen);
+
 	useEffect(() => {
 		if (status === "unauthenticated") Router.replace("/login");
 	}, [status]);
@@ -85,8 +86,8 @@ const Protected: NextPage = (): JSX.Element => {
 			return newProjectInfo;
 		});
 	};
-	function EditProject(idx: number) {
-		// console.log(projectInfoFromDB[idx].name);
+	function editProject(idx: number) {
+		seteditProjectInfo(projectInfoFromDB![editformModalOpen.idx]);
 		setEditFormModalOpen({
 			show: true,
 			idx: idx,
@@ -126,7 +127,7 @@ const Protected: NextPage = (): JSX.Element => {
 							<tr
 								key={idx}
 								className=" even:bg-gray-100/50 group even:dark:bg-gray-800 max-w-full table-row hover:bg-accent-200/50 even:hover:bg-accent-400/50 dark:even:hover:bg-accent-400/50"
-								onClick={() => EditProject(idx)}
+								onClick={() => editProject(idx)}
 							>
 								<td className="break-all table-cell rounded-l-md px-1">
 									{item.id}
@@ -148,7 +149,6 @@ const Protected: NextPage = (): JSX.Element => {
 					})}
 				</tbody>
 			</table>
-			<div className="text-gray-500">Edit</div>
 		</>
 	);
 	const DashboardHeader = () => (
@@ -190,8 +190,8 @@ const Protected: NextPage = (): JSX.Element => {
 						setModal={setEditFormModalOpen}
 						idx={editformModalOpen.idx}
 						onSubmit={handleSubmit}
-						setState={setProjectInfo}
-						state={projectInfoFromDB![editformModalOpen.idx]}
+						setState={seteditProjectInfo}
+						state={editProjectInfo}
 						setImage={setImageState}
 					/>
 				) : null}

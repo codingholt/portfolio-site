@@ -16,8 +16,6 @@ const LogIn: NextPage = () => {
 			password: userInfo.password,
 			callbackUrl: "/dashboard",
 		});
-
-		console.log(res);
 	};
 	return (
 		<Container>
