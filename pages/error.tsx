@@ -10,7 +10,7 @@ const Error: NextPage = () => {
 	const { error } = router.query;
 
 	return (
-		<Container color="red">
+		<Container>
 			<div className="heading">
 				<p>Sorry :(</p>
 				<p>{error}</p>
