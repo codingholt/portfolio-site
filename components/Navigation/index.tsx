@@ -20,12 +20,14 @@ function Navigation({}: {}) {
 				{Pages.map((page, idx) => (
 					<div key={idx}>
 						<Link href={page.link} tabIndex={idx}>
-							<div className="hover:cursor-pointer hover:bg-gray-100/50 rounded-md pl-5">
-								<span className="my-1  flex py-3  pr-20 hover:scale-110 origin-left duration-500">
-									<page.icon className="" />
-									<div className="ml-2">{page.name}</div>
-								</span>
-							</div>
+							<a>
+								<div className="hover:cursor-pointer hover:bg-gray-100/50 rounded-md pl-5">
+									<span className="my-1  flex py-3  pr-20 hover:scale-110 origin-left duration-500">
+										<page.icon className="" />
+										<div className="ml-2">{page.name}</div>
+									</span>
+								</div>
+							</a>
 						</Link>
 					</div>
 				))}
@@ -47,23 +49,22 @@ function Navigation({}: {}) {
 					</div>
 				))}
 				<hr />
-
 				{theme === "light" ? (
-					<div
+					<button
 						className="my-1 rounded-md flex py-3 hover:cursor-pointer pr-20 hover:scale-105 duration-500 hover:bg-gray-100/50 pl-5"
 						onClick={() => setTheme("dark")}
 					>
 						<HalfMoon className="hover:scale-105 mt-2" />
 						<div className="m-2">Dark</div>
-					</div>
+					</button>
 				) : (
-					<div
+					<button
 						className="my-1 rounded-md flex py-3 hover:cursor-pointer pr-20 hover:scale-105 duration-500 hover:bg-gray-100/50 pl-5"
 						onClick={() => setTheme("light")}
 					>
 						<SunLight className="hover:scale-105 mt-2" />
 						<div className="m-2">Light</div>
-					</div>
+					</button>
 				)}
 			</div>
 			{/* Mobile */}
@@ -93,17 +94,23 @@ function Navigation({}: {}) {
 						</a>
 					</div>
 				))}
+
 				<div className="divider-y h-6 mt-2" />
+
 				{theme === "light" ? (
-					<HalfMoon
-						className="hover:scale-105 mt-2"
-						onClick={() => setTheme("dark")}
-					/>
+					<button>
+						<HalfMoon
+							className="hover:scale-105 mt-2"
+							onClick={() => setTheme("dark")}
+						/>
+					</button>
 				) : (
-					<SunLight
-						className="hover:scale-105 mt-2"
-						onClick={() => setTheme("light")}
-					/>
+					<button>
+						<SunLight
+							className="hover:scale-105 mt-2"
+							onClick={() => setTheme("light")}
+						/>
+					</button>
 				)}
 			</div>
 		</>
