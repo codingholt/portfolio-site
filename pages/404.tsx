@@ -1,7 +1,7 @@
 import { Computer } from "iconoir-react";
 import type { NextPage } from "next";
 import Button from "../components/Button";
-import Container from "../components/Container";
+import Container from "../components/Container/index";
 
 const Home: NextPage = () => {
 	return (
