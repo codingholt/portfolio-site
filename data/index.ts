@@ -1,9 +1,5 @@
-import { link } from "fs";
 import {
-	EmojiBall,
-	Flask,
 	GitHub,
-	GitHubOutline,
 	HomeSimpleDoor,
 	LightBulbOn,
 	Mail,
