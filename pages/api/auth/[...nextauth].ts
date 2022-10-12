@@ -1,6 +1,6 @@
 import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-
+import process from "process";
 export const authOptions: NextAuthOptions = {
 	session: {
 		strategy: "jwt",
@@ -17,7 +17,10 @@ export const authOptions: NextAuthOptions = {
 				};
 
 				//Login checker. to be improved.
-				if (email !== "hey@svennijholt.xyz" || password !== "admin01") {
+				if (
+					email !== process.env.ADMIN_USERNAME ||
+					password !== process.env.ADMIN_PASSWORD
+				) {
 					throw new Error("invalid credentials");
 				}
 
