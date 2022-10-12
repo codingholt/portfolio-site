@@ -49,23 +49,25 @@ function Navigation({}: {}) {
 					</div>
 				))}
 				<hr />
-				{theme === "light" ? (
-					<button
-						className="my-1 rounded-md flex py-3 hover:cursor-pointer pr-20 hover:scale-105 duration-500 hover:bg-gray-100/50 pl-5"
-						onClick={() => setTheme("dark")}
-					>
-						<HalfMoon className="hover:scale-105 mt-2" />
-						<div className="m-2">Dark</div>
-					</button>
-				) : (
-					<button
-						className="my-1 rounded-md flex py-3 hover:cursor-pointer pr-20 hover:scale-105 duration-500 hover:bg-gray-100/50 pl-5"
-						onClick={() => setTheme("light")}
-					>
-						<SunLight className="hover:scale-105 mt-2" />
-						<div className="m-2">Light</div>
-					</button>
-				)}
+				<div className="hover:cursor-pointer hover:bg-gray-100/50 rounded-md pl-5">
+					{theme === "light" ? (
+						<button
+							className="my-1  w-full flex  py-1 hover:scale-105 origin-left duration-500 hover:cursor-pointer  rounded-md"
+							onClick={() => setTheme("dark")}
+						>
+							<HalfMoon className="hover:scale-105 mt-2" />
+							<div className="m-2">Dark</div>
+						</button>
+					) : (
+						<button
+							className="my-1  w-full flex  py-1 hover:scale-105 origin-left duration-500 hover:cursor-pointer  rounded-md"
+							onClick={() => setTheme("light")}
+						>
+							<SunLight className="hover:scale-105 mt-2" />
+							<div className="m-2">Light</div>
+						</button>
+					)}
+				</div>
 			</div>
 			{/* Mobile */}
 			<div className="xl:hidden container mx-auto flex justify-between fixed inset-0 z-10">
