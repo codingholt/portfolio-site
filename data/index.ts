@@ -22,11 +22,6 @@ const Pages: IPage[] = [
 		name: "Projecten",
 		link: "/projecten",
 	},
-	{
-		icon: Flask,
-		name: "Experimenten",
-		link: "/experimenten",
-	},
 ];
 
 const Social: IPage[] = [
