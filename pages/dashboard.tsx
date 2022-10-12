@@ -1,3 +1,4 @@
+import { utimes } from "fs";
 import { CursorPointer } from "iconoir-react";
 import { NextPage } from "next";
 import { useSession } from "next-auth/react";
@@ -7,6 +8,7 @@ import AddItemForm from "../components/AddItemForm";
 import Container from "../components/Container";
 import EditItemFrom from "../components/EditItemForm";
 import { IProject } from "../types";
+import { signOut } from "next-auth/react";
 
 interface EditIProject {
 	show: boolean;
@@ -201,7 +203,6 @@ const Protected: NextPage = (): JSX.Element => {
 			</p>
 		</div>
 	);
-
 	if (status === "authenticated") {
 		return (
 			// Some Component
@@ -237,6 +238,16 @@ const Protected: NextPage = (): JSX.Element => {
 						setImage={setImageState}
 					/>
 				) : null}
+				<div className="fixed bottom-0 right-0 mr-4 mb-4">
+					<button
+						type="button"
+						className="px-4 py-3  bg-red-500/80 text-white rounded-lg min-w-prose text-xs
+										hover:bg-red-500 hover:cursor-pointer hover:scale-105 duration-500 "
+						onClick={() => signOut()}
+					>
+						Log uit
+					</button>
+				</div>
 			</Container>
 		);
 	}
