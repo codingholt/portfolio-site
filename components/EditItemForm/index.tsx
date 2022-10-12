@@ -19,7 +19,7 @@ const EditItemFrom = ({
 	setImage,
 }: {
 	onSubmit: FormEventHandler;
-	onDelete: () => Promise<JSON>;
+	onDelete: (idx: number) => Promise<JSON>;
 	idx: number;
 	setModal: Dispatch<SetStateAction<EditIProject>>;
 	state: IProject | undefined;
