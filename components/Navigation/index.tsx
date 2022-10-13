@@ -49,37 +49,41 @@ function Navigation({}: {}) {
 					</div>
 				))}
 				<hr />
-				{theme === "light" ? (
-					<button
-						className="my-1 rounded-md flex py-3 hover:cursor-pointer pr-20 hover:scale-105 duration-500 hover:bg-gray-100/50 pl-5"
-						onClick={() => setTheme("dark")}
-					>
-						<HalfMoon className="hover:scale-105 mt-2" />
-						<div className="m-2">Dark</div>
-					</button>
-				) : (
-					<button
-						className="my-1 rounded-md flex py-3 hover:cursor-pointer pr-20 hover:scale-105 duration-500 hover:bg-gray-100/50 pl-5"
-						onClick={() => setTheme("light")}
-					>
-						<SunLight className="hover:scale-105 mt-2" />
-						<div className="m-2">Light</div>
-					</button>
-				)}
+				<div className="hover:cursor-pointer hover:bg-gray-100/50 rounded-md pl-5">
+					{theme === "light" ? (
+						<button
+							className="my-1  w-full flex  py-1 hover:scale-105 origin-left duration-500 hover:cursor-pointer  rounded-md"
+							onClick={() => setTheme("dark")}
+						>
+							<HalfMoon className="hover:scale-105 mt-2" />
+							<div className="m-2">Dark</div>
+						</button>
+					) : (
+						<button
+							className="my-1  w-full flex  py-1 hover:scale-105 origin-left duration-500 hover:cursor-pointer  rounded-md"
+							onClick={() => setTheme("light")}
+						>
+							<SunLight className="hover:scale-105 mt-2" />
+							<div className="m-2">Light</div>
+						</button>
+					)}
+				</div>
 			</div>
 			{/* Mobile */}
-			<div className="xl:hidden container mx-auto flex justify-between fixed inset-0 z-10">
+			<div className="xl:hidden container flex justify-end fixed inset-0 z-10">
 				{Pages.map((page, idx) => (
 					<div key={idx}>
 						<Link href={page.link}>
-							<div className="hover:scale-105 duration-500 mt-2">
-								<page.icon className="" />
-								{/* <div className="ml-2">{page.name}</div> */}
-							</div>
+							<a>
+								<div className="hover:scale-105 duration-500 mx-2 mt-2">
+									<page.icon className="" />
+									{/* <div className="ml-2">{page.name}</div> */}
+								</div>
+							</a>
 						</Link>
 					</div>
 				))}
-				<div className="divider-y h-6 mt-2" />
+				<div className="divider-y h-6 mt-2 mx-2" />
 
 				{Social.map((page, idx) => (
 					<div key={idx}>
@@ -88,29 +92,24 @@ function Navigation({}: {}) {
 							href={page.link}
 							rel="noopener noreferrer"
 						>
-							<div className="hover:scale-105 mt-2">
+							<div className="hover:scale-105 mt-2 mx-2">
 								<page.icon className="" />
 							</div>
 						</a>
 					</div>
 				))}
 
-				<div className="divider-y h-6 mt-2" />
-
+				<div className="divider-y h-6 mt-2 mx-2" />
 				{theme === "light" ? (
-					<button>
-						<HalfMoon
-							className="hover:scale-105 mt-2"
-							onClick={() => setTheme("dark")}
-						/>
-					</button>
+					<HalfMoon
+						className="hover:scale-105 mt-2 mx-2"
+						onClick={() => setTheme("dark")}
+					/>
 				) : (
-					<button>
-						<SunLight
-							className="hover:scale-105 mt-2"
-							onClick={() => setTheme("light")}
-						/>
-					</button>
+					<SunLight
+						className="hover:scale-105 mt-2 mx-2"
+						onClick={() => setTheme("light")}
+					/>
 				)}
 			</div>
 		</>
