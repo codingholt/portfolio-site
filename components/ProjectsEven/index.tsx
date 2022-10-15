@@ -7,6 +7,8 @@ import { Link } from "iconoir-react";
 import Image from "next/future/image";
 import { IProject } from "../../types";
 function ProjectsEven({ name, link, image, description }: IProject) {
+	const cleanLink = link?.replace(/^https?:\/\//, "").replace(/[^/]*$/, "");
+
 	return (
 		<>
 			<div className="lg:grid hidden md:grid-cols-3 my-5 ">
@@ -18,7 +20,7 @@ function ProjectsEven({ name, link, image, description }: IProject) {
 					<a href={link} rel="noopener noreferrer">
 						<div className="flex text-gray hover:scale-105 duration-500 hover:text-gray-500">
 							<Link width={20} />
-							Project link
+							{cleanLink}
 						</div>
 					</a>
 
@@ -38,29 +40,31 @@ function ProjectsEven({ name, link, image, description }: IProject) {
 				</div>
 			</div>
 			{/* Mobile */}
-			<div className="block relative lg:hidden mx-5 my-5 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 hover:opacity-80 transform transition duration-500 hover:scale-105 hover:cursor-pointer">
-				<div className="z-10">
-					<div className="m-5 relative h-64">
-						<Image
-							className="rounded-lg relative object-cover"
-							src={image!}
-							fill={true}
-							// width={1000}
-							// height={500}r
-							alt={name + " ter illustratie"}
-						/>
-					</div>
-					<div className="mx-5">
-						<h5 className="mb-2 heading-2 text-gray-900 dark:text-white">
-							{name}
-						</h5>
-						<div className=""></div>
-						<p className="mb-5 font-normal text-gray-700 dark:text-gray-400">
-							{description}
-						</p>
+			<a href={link}>
+				<div className="block relative lg:hidden mx-5 my-5 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 hover:opacity-80 transform transition duration-500 hover:scale-105 hover:cursor-pointer">
+					<div className="z-10">
+						<div className="m-5 relative h-64">
+							<Image
+								className="rounded-lg relative object-cover"
+								src={image!}
+								fill={true}
+								// width={1000}
+								// height={500}r
+								alt={name + " ter illustratie"}
+							/>
+						</div>
+						<div className="mx-5">
+							<h5 className="mb-2 heading-2 text-gray-900 dark:text-white">
+								{name}
+							</h5>
+							<div className=""></div>
+							<p className="mb-5 font-normal text-gray-700 dark:text-gray-400">
+								{description}
+							</p>
+						</div>
 					</div>
 				</div>
-			</div>
+			</a>
 		</>
 	);
 }
