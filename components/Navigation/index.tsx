@@ -70,7 +70,7 @@ function Navigation({}: {}) {
 				</div>
 			</div>
 			{/* Mobile */}
-			<div className="xl:hidden container flex justify-end fixed inset-0 z-10">
+			<div className="xl:hidden container flex justify-end fixed inset-0 z-20">
 				{Pages.map((page, idx) => (
 					<div key={idx}>
 						<Link href={page.link}>
