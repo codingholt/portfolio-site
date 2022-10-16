@@ -2,7 +2,6 @@ import React, { FormEventHandler } from "react";
 import { IProject } from "../../types";
 import { Dispatch, SetStateAction } from "react";
 import { InputItem } from "../AddItemForm/input";
-import { EditPencil } from "iconoir-react";
 import Projects from "../Projects";
 interface EditIProject {
 	show: boolean;
