@@ -10,7 +10,7 @@ const Home: NextPage = () => {
 				<p>Sofware Developer.</p>
 			</div>
 			<div>🇳🇱Netherlands</div>
-			<div className="text-gray-700">{IntroText}</div>
+			<div className="text-gray-700 dark:text-gray-300">{IntroText}</div>
 		</Container>
 	);
 };

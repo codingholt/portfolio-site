@@ -10,13 +10,13 @@ function Navigation({}: {}) {
 		<>
 			{/* Desktop */}
 			<div className="ml-5 2xl:ring-1 shadow-md dark:shadow-white/10	 dark:bg-gray-1000 dark:text-white ring-black/10 dark:ring-white/10 rounded-md left-0 hidden xl:inline-block xl:fixed my-auto top-1/2 -translate-y-1/2">
-				<Link href="/">
+				{/* <Link href="/">
 					<div className="my-1 rounded-md flex py-3 hover:cursor-pointer pr-20 hover:scale-105 duration-500 hover:bg-gray-100/50 pl-5">
 						<ProfileCircled />
 						<div className="ml-2">Sven</div>
 					</div>
 				</Link>
-				<hr />
+				<hr /> */}
 				{Pages.map((page, idx) => (
 					<div key={idx}>
 						<Link href={page.link} tabIndex={idx}>
