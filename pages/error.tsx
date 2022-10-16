@@ -3,7 +3,6 @@ import type { NextPage } from "next";
 import Button from "../components/Button";
 import Container from "../components/Container";
 import { useRouter } from "next/router";
-import { NextApiRequest, NextApiResponse } from "next";
 
 const Error: NextPage = () => {
 	const router = useRouter();
