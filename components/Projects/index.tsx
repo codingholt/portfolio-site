@@ -1,15 +1,9 @@
-// import Link from "next/link";
-// import { Pages, Social } from "../../data";
-// import { HalfMoon, MoonSat, ProfileCircled, SunLight } from "iconoir-react";
-// import { themeAtom } from "../../store";
-// import { useAtom } from "jotai";
 import { Link } from "iconoir-react";
 import Image from "next/future/image";
 import { IProject } from "../../types";
 function Projects({ name, link, image, description }: IProject) {
-	// const [theme, setTheme] = useAtom(themeAtom);
-	const cleanLink = link?.replace(/^https?:\/\//, "").replace(/[^\/]*$/, "");
-	console.log(cleanLink);
+	const cleanLink = link?.replace(/^https?:\/\//, "").replace(/\/(.*)/, "");
+
 	return (
 		<>
 			<div className="lg:grid hidden md:grid-cols-3 my-5 ">
@@ -49,8 +43,6 @@ function Projects({ name, link, image, description }: IProject) {
 								className="rounded-lg relative object-cover"
 								src={image!}
 								fill={true}
-								// width={1000}
-								// height={500}r
 								alt={name + " ter illustratie"}
 							/>
 						</div>
