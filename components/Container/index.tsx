@@ -1,5 +1,5 @@
 import Navigation from "../Navigation";
-
+import Footer from "../Footer";
 function Container({ children }: { children: React.ReactNode }) {
 	return (
 		<div className="dark:bg-black h-full dark:text-white duration-1000 overflow-y-auto">
@@ -9,6 +9,9 @@ function Container({ children }: { children: React.ReactNode }) {
 				<div className=" z-10 absolute max-w-full md:top-1/4 xl:top-1/4">
 					{children}
 				</div>
+			</div>
+			<div className="container mx-auto  relative ">
+				<Footer />
 			</div>
 		</div>
 	);
