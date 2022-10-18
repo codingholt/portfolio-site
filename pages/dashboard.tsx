@@ -17,8 +17,14 @@ interface EditIProject {
 
 const Protected: NextPage = (): JSX.Element => {
 	const [projectInfo, setProjectInfo] = useState<IProject | undefined>({
-		name: "",
-		description: "",
+		name: {
+			eng: "",
+			nl: "",
+		},
+		description: {
+			eng: "",
+			nl: "",
+		},
 		link: "",
 		image: "",
 	});
@@ -27,12 +33,27 @@ const Protected: NextPage = (): JSX.Element => {
 	>([
 		{
 			id: 0,
-			name: "",
-			description: "",
+			name: {
+				eng: "",
+				nl: "",
+			},
+			description: {
+				eng: "",
+				nl: "",
+			},
 			link: "",
 			image: "",
 		},
 	]);
+
+	// setProjectInfo({
+	// 	id: 5,
+	// 	name: {
+	// 		eng: "hello",
+	// 		nl: "halllo",
+	// 	},
+	// });
+
 	const [editProjectInfo, seteditProjectInfo] = useState<IProject>();
 	const [imageState, setImageState] = useState<Blob | undefined>(undefined);
 	const [formModalOpen, setFormModalOpen] = useState<boolean>(false);
@@ -176,10 +197,10 @@ const Protected: NextPage = (): JSX.Element => {
 									{item.id}
 								</td>
 								<td className="break-all table-cell ">
-									{item.name}
+									{item.name?.nl}
 								</td>
 								<td className="break-all table-cell ">
-									{item.description}
+									{item.description?.nl}
 								</td>
 								<td className="break-all table-cell -clamp-1 ">
 									{item.link}

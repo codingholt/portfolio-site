@@ -482,7 +482,7 @@ export interface IPage {
 	link: string;
 }
 
-interface multiLang {
+export interface multiLang {
 	nl: string;
 	eng: string;
 }
