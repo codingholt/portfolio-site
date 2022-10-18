@@ -105,7 +105,8 @@ const AddItemForm = ({
 													...state,
 													description: {
 														nl: e.target.value,
-														eng: state?.name?.eng!,
+														eng: state?.description
+															?.eng!,
 													},
 												})
 											}
@@ -136,7 +137,8 @@ const AddItemForm = ({
 													...state,
 													description: {
 														eng: e.target.value,
-														nl: state?.name?.nl!,
+														nl: state?.description
+															?.nl!,
 													},
 												})
 											}
