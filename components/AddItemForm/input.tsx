@@ -8,8 +8,8 @@ export const InputItem = ({
 	setState,
 }: {
 	placeholder: string;
-	valueToUpdate: any; //keyof IProjectWithoutIMG;
-	state: IProject | undefined;
+	valueToUpdate: "name" | "link" | "description";
+	state: any;
 	setState: Dispatch<SetStateAction<IProject | undefined>>;
 }) => {
 	return (

@@ -1,8 +1,20 @@
 import { Link } from "iconoir-react";
 import Image from "next/future/image";
-import { IProject } from "../../types";
-function Projects({ name, link, image, description }: IProject) {
+import { IProject, multiLang } from "../../types";
+import { useRouter } from "next/router";
+function Projects({
+	name,
+	link,
+	image,
+	description,
+}: {
+	name: string;
+	link: string;
+	image: string;
+	description: string;
+}) {
 	const cleanLink = link?.replace(/^https?:\/\//, "").replace(/\/(.*)/, "");
+	const router = useRouter();
 
 	return (
 		<>
