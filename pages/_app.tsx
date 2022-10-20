@@ -23,7 +23,9 @@ function MyApp({ Component, pageProps }: AppProps) {
 	return (
 		<SessionProvider session={pageProps.session}>
 			<div className={theme}>
-				<Component {...pageProps} />
+				<div className="dark:bg-black">
+					<Component {...pageProps} />
+				</div>
 			</div>
 		</SessionProvider>
 	);

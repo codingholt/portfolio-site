@@ -15,8 +15,8 @@ const Pages: IPage[] = [
 	},
 	{
 		icon: LightBulbOn,
-		name: "Projecten",
-		link: "/projecten",
+		name: "Projects",
+		link: "/projects",
 	},
 ];
 
