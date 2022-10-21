@@ -92,7 +92,20 @@ const Protected: NextPage = (): JSX.Element => {
 			body: JSON.stringify(projectData),
 		});
 		const json = await data.json();
-		if (json.succes) setFormModalOpen(false);
+		if (json.succes) {
+			const dbitem = json.new_database_item as IProject;
+			setProjectInfoFromDB([
+				...projectInfoFromDB!,
+				{
+					id: dbitem.id,
+					name: dbitem.name,
+					description: dbitem.description,
+					link: dbitem.link,
+					image: dbitem.image,
+				},
+			]);
+			setFormModalOpen(false);
+		}
 		return await json;
 	}
 
@@ -145,7 +158,6 @@ const Protected: NextPage = (): JSX.Element => {
 				...editProjectInfo,
 				image: imgUrl,
 			};
-			console.log(newProjectInfo);
 			putDatabase(newProjectInfo);
 			return newProjectInfo;
 		});
@@ -199,10 +211,12 @@ const Protected: NextPage = (): JSX.Element => {
 								<td className="break-all table-cell ">
 									{item.name?.nl}
 								</td>
+
 								<td className="break-all table-cell ">
 									{item.description?.nl}
+
 								</td>
-								<td className="break-all table-cell -clamp-1 ">
+								<td className="break-all table-cell truncate ">
 									{item.link}
 								</td>
 								<td className="break-all table-cell truncate rounded-r-md ">
