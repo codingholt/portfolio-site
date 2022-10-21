@@ -8,7 +8,6 @@ import { FormEventHandler, useState } from "react";
 const LogIn: NextPage = () => {
 	const [userInfo, setUserInfo] = useState({ email: "", password: "" });
 	const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
-		// validate your userinfo
 		e.preventDefault();
 
 		const res = await signIn("credentials", {

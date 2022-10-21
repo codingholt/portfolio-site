@@ -482,17 +482,21 @@ export interface IPage {
 	link: string;
 }
 
+export interface multiLang {
+	nl: string;
+	eng: string;
+}
 export interface IProject {
 	id?: number;
-	name?: string;
+	name?: multiLang;
 	link?: string;
-	description?: string;
+	description?: multiLang;
 	image?: string;
 }
 
 export interface IProjectWithoutIMG {
 	id?: number;
-	name?: string;
+	name?: multiLang;
 	link?: string;
-	description?: string;
+	description?: multiLang;
 }

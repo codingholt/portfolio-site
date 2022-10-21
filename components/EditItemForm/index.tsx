@@ -3,6 +3,7 @@ import { IProject } from "../../types";
 import { Dispatch, SetStateAction } from "react";
 import { InputItem } from "../AddItemForm/input";
 import Projects from "../Projects";
+import { useRouter } from "next/router";
 interface EditIProject {
 	show: boolean;
 	idx: number;
@@ -25,6 +26,8 @@ const EditItemFrom = ({
 	setState: Dispatch<SetStateAction<IProject | undefined>>;
 	setImage: Dispatch<SetStateAction<Blob | undefined>>;
 }) => {
+	const router = useRouter();
+
 	return (
 		<>
 			<div className="inset-0 fixed min-h-full h-screen items-center justify-center p-4 text-center overflow-y-auto bg-black bg-opacity-25" />
@@ -39,23 +42,145 @@ const EditItemFrom = ({
 							<div className="block">
 								{/* CONTENT */}
 								<Projects
-									name={state?.name}
-									link={state?.link}
-									image={state?.image}
-									description={state?.description}
+									name={
+										router.locale === "en-US"
+											? state?.name?.eng!
+											: state?.name?.nl!
+									}
+									link={state?.link!}
+									image={state?.image!}
+									description={
+										router.locale === "en-US"
+											? state?.description?.eng!
+											: state?.description?.nl!
+									}
 								/>
-								<InputItem
-									placeholder="Naam"
-									valueToUpdate="name"
-									state={state}
-									setState={setState}
-								/>
-								<InputItem
-									placeholder="Description"
-									valueToUpdate="description"
-									state={state}
-									setState={setState}
-								/>
+								<div className="bg-white dark:bg-black my-8 rounded-lg">
+									<div className="relative bg-inherit my-4">
+										<input
+											type="text"
+											id="Name NL"
+											name="Name NL"
+											key="Name NL"
+											className="peer bg-transparent h-10 w-full rounded-lg text-black dark:text-white placeholder-transparent ring-2 px-2 ring-gray-500 focus:ring-sky-600 focus:outline-none focus:border-rose-600"
+											placeholder="Name Eng"
+											autoComplete="off"
+											value={state?.name?.nl}
+											onChange={(e) =>
+												setState({
+													...state,
+													name: {
+														eng: state?.name?.eng!,
+														nl: e.target.value,
+													},
+												})
+											}
+											required={true}
+										/>
+										<label
+											htmlFor="Name NL"
+											className="absolute cursor-text left-0 -top-5 text-sm text-gray-500 mx-1 px-1 
+                peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-sky-600 peer-focus:text-sm transition-all"
+										>
+											Name NL
+										</label>
+									</div>
+								</div>
+								<div className="bg-white dark:bg-black my-8 rounded-lg">
+									<div className="relative bg-inherit my-4">
+										<input
+											type="text"
+											id="Name Eng"
+											name="Name Eng"
+											key="Name Eng"
+											className="peer bg-transparent h-10 w-full rounded-lg text-black dark:text-white placeholder-transparent ring-2 px-2 ring-gray-500 focus:ring-sky-600 focus:outline-none focus:border-rose-600"
+											placeholder="Name Eng"
+											autoComplete="off"
+											value={state?.name?.eng}
+											onChange={(e) =>
+												setState({
+													...state,
+													name: {
+														eng: e.target.value,
+														nl: state?.name?.nl!,
+													},
+												})
+											}
+											required={true}
+										/>
+										<label
+											htmlFor="Name Eng"
+											className="absolute cursor-text left-0 -top-5 text-sm text-gray-500 mx-1 px-1 
+                peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-sky-600 peer-focus:text-sm transition-all"
+										>
+											Name Eng
+										</label>
+									</div>
+								</div>
+								<div className="bg-white dark:bg-black my-8 rounded-lg">
+									<div className="relative bg-inherit my-4">
+										<input
+											type="text"
+											id="Description NL"
+											name="Description NL"
+											key="Description NL"
+											className="peer bg-transparent h-10 w-full rounded-lg text-black dark:text-white placeholder-transparent ring-2 px-2 ring-gray-500 focus:ring-sky-600 focus:outline-none focus:border-rose-600"
+											placeholder="Description NL"
+											autoComplete="off"
+											value={state?.description?.nl}
+											onChange={(e) =>
+												setState({
+													...state,
+													description: {
+														nl: e.target.value,
+														eng: state?.description
+															?.eng!,
+													},
+												})
+											}
+											required={true}
+										/>
+										<label
+											htmlFor="Description NL"
+											className="absolute cursor-text left-0 -top-5 text-sm text-gray-500 mx-1 px-1 
+                peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-sky-600 peer-focus:text-sm transition-all"
+										>
+											Description NL
+										</label>
+									</div>
+								</div>
+								<div className="bg-white dark:bg-black my-8 rounded-lg">
+									<div className="relative bg-inherit my-4">
+										<input
+											type="text"
+											id="Description ENG"
+											name="Description ENG"
+											key="Description ENG"
+											className="peer bg-transparent h-10 w-full rounded-lg text-black dark:text-white placeholder-transparent ring-2 px-2 ring-gray-500 focus:ring-sky-600 focus:outline-none focus:border-rose-600"
+											placeholder="Description NL"
+											autoComplete="off"
+											value={state?.description?.eng}
+											onChange={(e) =>
+												setState({
+													...state,
+													description: {
+														eng: e.target.value,
+														nl: state?.description
+															?.nl!,
+													},
+												})
+											}
+											required={true}
+										/>
+										<label
+											htmlFor="Description ENG"
+											className="absolute cursor-text left-0 -top-5 text-sm text-gray-500 mx-1 px-1 
+                peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-sky-600 peer-focus:text-sm transition-all"
+										>
+											Description ENG
+										</label>
+									</div>
+								</div>
 
 								<InputItem
 									placeholder="Link"

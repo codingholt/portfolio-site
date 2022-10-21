@@ -6,6 +6,35 @@ const nextConfig = {
 
 module.exports = nextConfig;
 module.exports = {
+	i18n: {
+		// These are all the locales you want to support in
+		// your application
+		locales: ["en-US", "nl-NL"],
+		// This is the default locale you want to be used when visiting
+		// a non-locale prefixed path e.g. `/hello`
+		defaultLocale: "en-US",
+		// This is a list of locale domains and the default locale they
+		// should handle (these are only required when setting up domain routing)
+		// Note: subdomains must be included in the domain value to be matched e.g. "fr.example.com".
+		// domains: [
+		// 	{
+		// 		domain: "svennijholt.nl",
+		// 		defaultLocale: "nl-NL",
+		// 	},
+		// 	{
+		// 		domain: "svennijholt.online",
+		// 		defaultLocale: "en-US",
+		// 	},
+		// 	{
+		// 		domain: "codingholt.tech",
+		// 		defaultLocale: "en-US",
+		// 	},
+		// 	{
+		// 		domain: "svennijholt.xyz",
+		// 		defaultLocale: "en-US",
+		// 	},
+		// ],
+	},
 	images: {
 		domains: ["picsum.photos", "res.cloudinary.com"],
 	},

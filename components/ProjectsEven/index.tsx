@@ -1,7 +1,17 @@
 import { Link } from "iconoir-react";
 import Image from "next/future/image";
 import { IProject } from "../../types";
-function ProjectsEven({ name, link, image, description }: IProject) {
+function ProjectsEven({
+	name,
+	link,
+	image,
+	description,
+}: {
+	name: string;
+	link: string;
+	image: string;
+	description: string;
+}) {
 	const cleanLink = link?.replace(/^https?:\/\//, "").replace(/\/(.*)/, "");
 
 	return (

@@ -2,9 +2,9 @@ import "../styles/globals.css";
 import type { AppProps as NextAppProps } from "next/app";
 import { themeAtom } from "../store";
 import { useAtom } from "jotai";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { SessionProvider } from "next-auth/react";
-
+import Head from "next/head";
 type AppProps<P = any> = {
 	pageProps: P;
 } & Omit<NextAppProps<P>, "pageProps">;
@@ -22,8 +22,13 @@ function MyApp({ Component, pageProps }: AppProps) {
 
 	return (
 		<SessionProvider session={pageProps.session}>
+			<Head>
+				<link href="favicon.ico" type="image/x-icon" />
+			</Head>
 			<div className={theme}>
-				<Component {...pageProps} />
+				<div className="dark:bg-black">
+					<Component {...pageProps} />
+				</div>
 			</div>
 		</SessionProvider>
 	);

@@ -1,12 +1,12 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { authOptions } from "../auth/[...nextauth]";
 import { unstable_getServerSession } from "next-auth/next";
-import { PrismaClient } from "@prisma/client";
+import { Prisma, PrismaClient } from "@prisma/client";
 import { IProject } from "../../../types";
 
 const prisma = new PrismaClient();
 interface ExtendedNextApiRequest extends NextApiRequest {
-	body: IProject;
+	body: any;
 }
 export default async function index(
 	req: ExtendedNextApiRequest,

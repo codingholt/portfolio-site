@@ -9,8 +9,8 @@ datasource db {
 
 model projects {
   id          Int     @id @default(autoincrement())
-  name        String? @db.VarChar(255)
-  description String? @db.MediumText
+  name        Json?
+  description Json?
   link        String? @db.VarChar(255)
   image       String? @db.MediumText
 }

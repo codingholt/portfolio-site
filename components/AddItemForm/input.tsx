@@ -1,4 +1,4 @@
-import { IProject, IProjectWithoutIMG } from "../../types";
+import { IProject, IProjectWithoutIMG, multiLang } from "../../types";
 import { Dispatch, SetStateAction } from "react";
 
 export const InputItem = ({
@@ -8,8 +8,8 @@ export const InputItem = ({
 	setState,
 }: {
 	placeholder: string;
-	valueToUpdate: keyof IProjectWithoutIMG;
-	state: IProject | undefined;
+	valueToUpdate: "name" | "link" | "description";
+	state: any;
 	setState: Dispatch<SetStateAction<IProject | undefined>>;
 }) => {
 	return (
