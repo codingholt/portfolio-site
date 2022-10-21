@@ -34,9 +34,9 @@ const Projecten: NextPage<Props> = () => {
 			</Head>
 			<Container>
 				<div className="heading">
-					<p className="mt-12">
+					<h1 className="mt-12">
 						{router.locale === "en-US" ? "Projects" : "Projecten."}
-					</p>
+					</h1>
 				</div>
 				<div className="inline-flex">
 					<LightBulbOn width={24} />
