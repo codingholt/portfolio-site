@@ -42,10 +42,18 @@ const EditItemFrom = ({
 							<div className="block">
 								{/* CONTENT */}
 								<Projects
-									name={state?.name}
-									link={state?.link}
-									image={state?.image}
-									description={state?.description}
+									name={
+										router.locale === "en-US"
+											? state?.name?.eng!
+											: state?.name?.nl!
+									}
+									link={state?.link!}
+									image={state?.image!}
+									description={
+										router.locale === "en-US"
+											? state?.description?.eng!
+											: state?.description?.nl!
+									}
 								/>
 								<div className="bg-white dark:bg-black my-8 rounded-lg">
 									<div className="relative bg-inherit my-4">

@@ -40,7 +40,7 @@ const Home: NextPage<Props> = (props) => {
 				/>
 				<meta
 					property="og:image"
-					content="URL naar afbeelding (Bijv. Headerafbeelding)"
+					content="https://svennijholt.nl/api/image?title=Sven%20Nijholt"
 				/>
 				<meta property="og:url" content="https://svennijholt.nl" />
 				<meta property="og:site_name" content="Sven Nijholt" />
