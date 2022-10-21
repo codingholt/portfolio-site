@@ -47,7 +47,7 @@ const Home: NextPage<Props> = (props) => {
 			</Head>
 			<Container>
 				<div className="heading">
-					<p>Sven.</p>
+					<h1>Sven.</h1>
 					<p>Sofware Developer.</p>
 				</div>
 				<div>🇳🇱Netherlands</div>
