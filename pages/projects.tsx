@@ -19,7 +19,11 @@ const Projecten: NextPage<Props> = () => {
 					content="Pagina van de projecten waar Sven Nijholt aan meegewerkt heeft"
 				/>
 				<meta name="robots" content="index, follow" />
-				<meta property="og:type" content="Projecten Sven Nijholt" />
+				<meta
+					property="og:url"
+					content="https://www.svennijholt.nl/projects"
+				/>
+				<meta property="og:type" content="website" />
 				<meta property="og:title" content="Projecten | Sven Nijholt" />
 				<meta
 					property="og:description"
@@ -29,8 +33,22 @@ const Projecten: NextPage<Props> = () => {
 					property="og:image"
 					content="https://svennijholt.nl/api/image?title=Projects"
 				/>
-				<meta property="og:url" content="https://svennijholt.nl" />
-				<meta property="og:site_name" content="Sven Nijholt" />
+
+				<meta name="twitter:card" content="summary_large_image" />
+				<meta property="twitter:domain" content="svennijholt.nl" />
+				<meta
+					property="twitter:url"
+					content="https://www.svennijholt.nl/projects"
+				/>
+				<meta name="twitter:title" content="Projecten | Sven Nijholt" />
+				<meta
+					name="twitter:description"
+					content="Pagina van de projecten waar sven nijholt aan meegewerkt heeft"
+				/>
+				<meta
+					name="twitter:image"
+					content="https://svennijholt.nl/api/image?title=Projects"
+				/>
 			</Head>
 			<Container>
 				<div className="heading">

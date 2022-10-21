@@ -29,10 +29,9 @@ const Home: NextPage<Props> = (props) => {
 					content="softwareontwikkelaar met een passie voor alles wat met computers te maken heeft."
 				/>
 				<meta name="robots" content="index, follow" />
-				<meta
-					property="og:type"
-					content="Portfolio website Sven Nijholt"
-				/>
+
+				<meta property="og:url" content="https://www.svennijholt.nl/" />
+				<meta property="og:type" content="website" />
 				<meta property="og:title" content="Home | Sven Nijholt" />
 				<meta
 					property="og:description"
@@ -42,8 +41,22 @@ const Home: NextPage<Props> = (props) => {
 					property="og:image"
 					content="https://svennijholt.nl/api/image?title=Sven%20Nijholt"
 				/>
-				<meta property="og:url" content="https://svennijholt.nl" />
-				<meta property="og:site_name" content="Sven Nijholt" />
+
+				<meta name="twitter:card" content="summary_large_image" />
+				<meta property="twitter:domain" content="svennijholt.nl" />
+				<meta
+					property="twitter:url"
+					content="https://www.svennijholt.nl/"
+				/>
+				<meta name="twitter:title" content="Home | Sven Nijholt" />
+				<meta
+					name="twitter:description"
+					content="Softwareontwikkelaar met een passie voor alles wat met computers te maken heeft."
+				/>
+				<meta
+					name="twitter:image"
+					content="https://svennijholt.nl/api/image?title=Sven%20Nijholt"
+				/>
 			</Head>
 			<Container>
 				<div className="heading">
