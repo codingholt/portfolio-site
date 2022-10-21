@@ -23,11 +23,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 	return (
 		<SessionProvider session={pageProps.session}>
 			<Head>
-				<link
-					rel="shortcut icon"
-					href="favicon.ico"
-					type="image/x-icon"
-				/>
+				<link href="favicon.ico" type="image/x-icon" />
 			</Head>
 			<div className={theme}>
 				<div className="dark:bg-black">
