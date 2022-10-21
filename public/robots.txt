@@ -1,6 +1,5 @@
 User-Agent: *
 Allow: /
-Allow: /api/image
 Disallow: /dashboard
-Disallow: /api
+Disallow: /api/projects
 Sitemap: https://svennijholt.nl/sitemap.xml
