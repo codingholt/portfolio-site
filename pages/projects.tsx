@@ -15,12 +15,11 @@ export async function getStaticProps() {
 	const res = await fetch("https://www.svennijholt.nl/api/projects");
 	const resjson = await res.json();
 
-	if (resjson.succes) {
-		const projects = resjson.database_items;
-		return {
-			props: { projects },
-		};
-	}
+	const projects = resjson.database_items;
+	return {
+		props: { projects },
+	};
+
 	return;
 }
 
