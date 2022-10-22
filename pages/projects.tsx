@@ -12,7 +12,7 @@ interface Props {
 }
 
 export async function getStaticProps() {
-	const res = await fetch("http://localhost:3000/api/projects");
+	const res = await fetch("https://www.svennijholt.nl/api/projects");
 	const resjson = await res.json();
 
 	if (resjson.succes) {
