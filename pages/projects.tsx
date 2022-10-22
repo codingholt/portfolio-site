@@ -19,8 +19,6 @@ export async function getStaticProps() {
 	return {
 		props: { projects },
 	};
-
-	return;
 }
 
 const Projecten: NextPage<Props> = ({ projects }) => {
