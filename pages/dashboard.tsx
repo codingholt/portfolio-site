@@ -45,14 +45,9 @@ const Protected: NextPage = (): JSX.Element => {
 			image: "",
 		},
 	]);
-
-	// setProjectInfo({
-	// 	id: 5,
-	// 	name: {
-	// 		eng: "hello",
-	// 		nl: "halllo",
-	// 	},
-	// });
+	function revalidate() {
+		fetch("/api/revalidate");
+	}
 
 	const [editProjectInfo, seteditProjectInfo] = useState<IProject>();
 	const [imageState, setImageState] = useState<Blob | undefined>(undefined);
@@ -105,6 +100,7 @@ const Protected: NextPage = (): JSX.Element => {
 				},
 			]);
 			setFormModalOpen(false);
+			revalidate();
 		}
 		return await json;
 	}
@@ -121,6 +117,7 @@ const Protected: NextPage = (): JSX.Element => {
 		const json = await data.json();
 		if (json.succes) {
 			setEditFormModalOpen({ idx: editformModalOpen.idx, show: false });
+			revalidate();
 		}
 		return await json;
 	}
@@ -145,7 +142,9 @@ const Protected: NextPage = (): JSX.Element => {
 		const json = await fetchDel.json();
 		if (json.succes) {
 			setEditFormModalOpen({ idx: editformModalOpen.idx, show: false });
+			revalidate();
 		}
+
 		return json as JSON;
 	};
 
@@ -212,9 +211,8 @@ const Protected: NextPage = (): JSX.Element => {
 									{item.name?.nl}
 								</td>
 
-								<td className="break-all table-cell ">
+								<td className="break-all table-cell truncate">
 									{item.description?.nl}
-
 								</td>
 								<td className="break-all table-cell truncate ">
 									{item.link}

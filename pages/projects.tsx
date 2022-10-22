@@ -6,9 +6,25 @@ import Projects from "../components/Projects";
 import ProjectsEven from "../components/ProjectsEven";
 import { useRouter } from "next/router";
 import Head from "next/head";
-interface Props {}
+import { IProject } from "../types";
+interface Props {
+	projects: IProject[];
+}
 
-const Projecten: NextPage<Props> = () => {
+export async function getStaticProps() {
+	const res = await fetch("http://localhost:3000/api/projects");
+	const resjson = await res.json();
+
+	if (resjson.succes) {
+		const projects = resjson.database_items;
+		return {
+			props: { projects },
+		};
+	}
+	return;
+}
+
+const Projecten: NextPage<Props> = ({ projects }) => {
 	const router = useRouter();
 	return (
 		<>
@@ -47,7 +63,7 @@ const Projecten: NextPage<Props> = () => {
 					</span>
 				</div>
 
-				{ProjectData.map((item, idx) =>
+				{projects.map((item, idx) =>
 					idx % 2 ? (
 						<div key={idx}>
 							<ProjectsEven

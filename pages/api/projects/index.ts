@@ -8,12 +8,12 @@ const prisma = new PrismaClient();
 interface ExtendedNextApiRequest extends NextApiRequest {
 	body: any;
 }
+
 export default async function index(
 	req: ExtendedNextApiRequest,
 	res: NextApiResponse
 ) {
 	const session = await unstable_getServerSession(req, res, authOptions);
-	if (!session) res.status(401).json({ error: "Unauthenticated user" });
 
 	switch (req.method) {
 		case "GET":
@@ -24,6 +24,9 @@ export default async function index(
 			});
 			break;
 		case "POST":
+			if (!session)
+				res.status(401).json({ error: "Unauthenticated user" });
+
 			const project = await prisma.projects.create({
 				data: {
 					name: req.body.name,
