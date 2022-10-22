@@ -42,6 +42,7 @@ const Home: NextPage<Props> = (props) => {
 					property="og:image"
 					content="https://svennijholt.nl/api/image?title=Sven%20Nijholt"
 				/>
+				<meta name="twitter:card" content="summary_large_image" />
 				<meta property="og:url" content="https://svennijholt.nl" />
 				<meta property="og:site_name" content="Sven Nijholt" />
 			</Head>
