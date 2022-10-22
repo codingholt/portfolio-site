@@ -55,7 +55,7 @@ export default async function index(req: NextApiRequest, res: NextApiResponse) {
 			if (!session) {
 				res.status(401).json({ error: "Unauthenticated user" });
 			}
-			console.log("DEL?!");
+
 			const delProject = await prisma.projects
 				.delete({
 					where: {

@@ -35,7 +35,7 @@ function ProjectsEven({
 					<Image
 						src={image!}
 						loading="lazy"
-						className="rounded-md"
+						className="rounded-md object-cover"
 						fill={true}
 						alt={
 							"Afbeelding ter illustratie van het project: " +
