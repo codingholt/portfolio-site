@@ -13,8 +13,9 @@ interface Props {
 
 export async function getStaticProps() {
 	const res = await fetch("https://www.svennijholt.nl/api/projects");
+	console.log(res);
 	const resjson = await res.json();
-
+	if (resjson.error) return { props: {} };
 	const projects = resjson.database_items;
 	return {
 		props: { projects },
@@ -60,43 +61,45 @@ const Projecten: NextPage<Props> = ({ projects }) => {
 					</span>
 				</div>
 
-				{projects.map((item, idx) =>
-					idx % 2 ? (
-						<div key={idx}>
-							<ProjectsEven
-								name={
-									router.locale === "en-US"
-										? item.name?.eng!
-										: item.name?.nl!
-								}
-								link={item.link!}
-								image={item.image!}
-								description={
-									router.locale === "en-US"
-										? item.description?.eng!
-										: item.description?.nl!
-								}
-							/>
-						</div>
-					) : (
-						<div key={idx}>
-							<Projects
-								name={
-									router.locale === "en-US"
-										? item.name?.eng!
-										: item.name?.nl!
-								}
-								link={item.link!}
-								image={item.image!}
-								description={
-									router.locale === "en-US"
-										? item.description?.eng!
-										: item.description?.nl!
-								}
-							/>
-						</div>
-					)
-				)}
+				{projects
+					? projects.map((item, idx) =>
+							idx % 2 ? (
+								<div key={idx}>
+									<ProjectsEven
+										name={
+											router.locale === "en-US"
+												? item.name?.eng!
+												: item.name?.nl!
+										}
+										link={item.link!}
+										image={item.image!}
+										description={
+											router.locale === "en-US"
+												? item.description?.eng!
+												: item.description?.nl!
+										}
+									/>
+								</div>
+							) : (
+								<div key={idx}>
+									<Projects
+										name={
+											router.locale === "en-US"
+												? item.name?.eng!
+												: item.name?.nl!
+										}
+										link={item.link!}
+										image={item.image!}
+										description={
+											router.locale === "en-US"
+												? item.description?.eng!
+												: item.description?.nl!
+										}
+									/>
+								</div>
+							)
+					  )
+					: null}
 			</Container>
 		</>
 	);
