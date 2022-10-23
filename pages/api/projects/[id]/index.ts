@@ -23,8 +23,10 @@ export default async function index(req: NextApiRequest, res: NextApiResponse) {
 			break;
 
 		case "PUT":
-			if (!session)
+			if (!session) {
 				res.status(401).json({ error: "Unauthenticated user" });
+				return;
+			}
 			const updateProject = await prisma.projects
 				.update({
 					data: {
@@ -54,8 +56,8 @@ export default async function index(req: NextApiRequest, res: NextApiResponse) {
 		case "DELETE":
 			if (!session) {
 				res.status(401).json({ error: "Unauthenticated user" });
+				return;
 			}
-
 			const delProject = await prisma.projects
 				.delete({
 					where: {

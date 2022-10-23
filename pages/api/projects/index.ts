@@ -24,8 +24,10 @@ export default async function index(
 			});
 			break;
 		case "POST":
-			if (!session)
+			if (!session) {
 				res.status(401).json({ error: "Unauthenticated user" });
+				return;
+			}
 
 			const project = await prisma.projects.create({
 				data: {
