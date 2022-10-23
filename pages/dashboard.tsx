@@ -106,7 +106,6 @@ const Protected: NextPage = (): JSX.Element => {
 	}
 
 	async function putDatabase(projectData: IProject) {
-		console.log(JSON.stringify(projectData));
 		const data = await fetch(`/api/projects/${editProjectInfo?.id}`, {
 			method: "PUT",
 			headers: {
@@ -115,9 +114,9 @@ const Protected: NextPage = (): JSX.Element => {
 			body: JSON.stringify(projectData),
 		});
 		const json = await data.json();
+		revalidate();
 		if (json.succes) {
 			setEditFormModalOpen({ idx: editformModalOpen.idx, show: false });
-			revalidate();
 		}
 		return await json;
 	}

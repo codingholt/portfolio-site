@@ -13,7 +13,6 @@ interface Props {
 
 export async function getStaticProps() {
 	const res = await fetch("https://www.svennijholt.nl/api/projects");
-	console.log(res);
 	const resjson = await res.json();
 	if (resjson.error) return { props: {} };
 	const projects = resjson.database_items;
@@ -27,7 +26,7 @@ const Projecten: NextPage<Props> = ({ projects }) => {
 	return (
 		<>
 			<Head>
-				<title>Home | Sven Nijholt</title>
+				<title>Projects | Sven Nijholt</title>
 				<meta
 					name="description"
 					content="Pagina van de projecten waar Sven Nijholt aan meegewerkt heeft"

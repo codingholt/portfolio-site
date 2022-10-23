@@ -33,6 +33,7 @@ const Home: NextPage<Props> = (props) => {
 					property="og:type"
 					content="Portfolio website Sven Nijholt"
 				/>
+				<link rel="cannonical" href="https://www.svennijholt.nl" />
 				<meta property="og:title" content="Home | Sven Nijholt" />
 				<meta
 					property="og:description"
