@@ -59,11 +59,9 @@ export default function Footer() {
 							})
 						}
 					>
-						<a className="text-gray-500 hover:text-gray-600 transition">
-							<span className="hover:bg-gray-100 transition duration-200 p-2 rounded-md">
-								Dutch
-							</span>
-						</a>
+						<span className="hover:bg-gray-100 text-gray-500 hover:text-gray-600 transition duration-200 p-2 rounded-md">
+							Dutch
+						</span>
 					</div>
 					<div
 						className="hover:cursor-pointer right-0"
@@ -73,11 +71,12 @@ export default function Footer() {
 							})
 						}
 					>
-						<a className="text-gray-500 hover:text-gray-600 transition">
-							<span className="hover:bg-gray-100 p-2 rounded-md transition duration-200">
-								English
-							</span>
-						</a>
+						<span
+							className="hover:bg-gray-100 text-gray-500 hover:text-gray-600 
+						 p-2 rounded-md transition duration-200"
+						>
+							English
+						</span>
 					</div>
 				</div>
 			</div>

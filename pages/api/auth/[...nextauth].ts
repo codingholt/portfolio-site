@@ -4,7 +4,7 @@ import process from "process";
 export const authOptions: NextAuthOptions = {
 	session: {
 		strategy: "jwt",
-		maxAge: 12 * 60 * 60,
+		maxAge: 12 * 60 * 60, // 12Hours
 	},
 	providers: [
 		CredentialsProvider({
@@ -16,12 +16,12 @@ export const authOptions: NextAuthOptions = {
 					password: string;
 				};
 
-				//Login checker. to be improved.
+				// Login checker. to be improved.
 				if (
 					email !== process.env.ADMIN_USERNAME ||
 					password !== process.env.ADMIN_PASSWORD
 				) {
-					throw new Error("invalid credentials");
+					throw new Error("Invalid Credentials");
 				}
 
 				// if everything is fine
@@ -35,7 +35,7 @@ export const authOptions: NextAuthOptions = {
 		}),
 	],
 	pages: {
-		signIn: "/auth/signin",
+		signIn: "/login",
 		error: "/error",
 		// signOut: '/auth/signout'
 	},
