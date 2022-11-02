@@ -1,6 +1,6 @@
 import { Link } from "iconoir-react";
 import Image from "next/future/image";
-import { IProject, multiLang } from "../../types";
+
 import { useRouter } from "next/router";
 function Projects({
 	name,

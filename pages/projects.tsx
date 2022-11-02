@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Container from "../components/Container";
 import { LightBulbOn } from "iconoir-react";
-import { ProjectData } from "../data";
+
 import Projects from "../components/Projects";
 import ProjectsEven from "../components/ProjectsEven";
 import { useRouter } from "next/router";
