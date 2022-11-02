@@ -49,9 +49,9 @@ export default function Footer() {
 							</ExternalLink>
 						);
 					})}
-					<span className="hover:bg-gray-100 p-2 rounded-md transition duration-200">
+					{/* <span className="hover:bg-gray-100 p-2 rounded-md transition duration-200">
 						Email: contact@svennijholt.xyz
-					</span>
+					</span> */}
 				</div>
 				<div className="flex flex-col space-y-4 	">
 					<div
@@ -63,7 +63,7 @@ export default function Footer() {
 						}
 					>
 						<span className="hover:bg-gray-100 text-gray-500 hover:text-gray-600 transition duration-200 p-2 rounded-md">
-							Dutch
+							Nederlands
 						</span>
 					</div>
 					<div
