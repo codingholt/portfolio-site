@@ -22,7 +22,7 @@ function ProjectsEven({
 				dark:bg-black shadow-lg dark:shadow-white/20 col-end-2 h-[450px]"
 				>
 					<span className="heading-2">{name}</span>
-					<a href={link} rel="noopener noreferrer">
+					<a href={link} target="_blank" rel="noopener noreferrer">
 						<div className="flex text-gray hover:scale-105 duration-500 hover:text-gray-500">
 							<Link width={20} />
 							{cleanLink}

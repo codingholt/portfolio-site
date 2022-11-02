@@ -37,7 +37,6 @@ export const authOptions: NextAuthOptions = {
 	pages: {
 		signIn: "/login",
 		error: "/error",
-		// signOut: '/auth/signout'
 	},
 	callbacks: {
 		jwt(params) {

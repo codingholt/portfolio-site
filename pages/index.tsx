@@ -52,8 +52,10 @@ const Home: NextPage<Props> = (props) => {
 					<h1>Sven.</h1>
 					<p>Sofware Developer.</p>
 				</div>
-				<div>🇳🇱Netherlands</div>
-				<div className="text-gray-700 dark:text-gray-300">
+				{/* <div className="text-gray-500 italic">
+					&quot;{props.quote}&quot; - {props.quoteAuthor}
+				</div> */}
+				<div className="text-gray-800 dark:text-gray-300">
 					{props.langIntroText}
 				</div>
 				{/* <MailModal /> */}

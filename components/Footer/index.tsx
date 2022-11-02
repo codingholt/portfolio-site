@@ -49,6 +49,9 @@ export default function Footer() {
 							</ExternalLink>
 						);
 					})}
+					<span className="hover:bg-gray-100 p-2 rounded-md transition duration-200">
+						Email: contact@svennijholt.xyz
+					</span>
 				</div>
 				<div className="flex flex-col space-y-4 	">
 					<div
