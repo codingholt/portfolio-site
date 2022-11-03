@@ -15,15 +15,10 @@ export default async function handler(req: NextRequest) {
 		const { searchParams } = req.nextUrl;
 
 		const hasTitle = searchParams.has("title");
-		// const hasSubText = searchParams.has("subtext");
 
 		const title = hasTitle
 			? searchParams.get("title")?.slice(0, 100)
 			: "My default title";
-
-		// const subtext = hasSubText
-		// 	? searchParams.get("subtext")?.slice(0, 100)
-		// 	: "My default title";
 
 		return new ImageResponse(
 			(
@@ -44,7 +39,7 @@ export default async function handler(req: NextRequest) {
 					<div
 						style={{
 							padding: "5px 40px",
-							width: "50px",
+							width: "500px",
 							textAlign: "left",
 							fontFamily: "Inter",
 							lineHeight: 0.95,
