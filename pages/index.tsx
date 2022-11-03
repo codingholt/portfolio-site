@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Container from "../components/Container";
-import MailModal from "../components/MailModal";
+
 import { IntroText } from "../data";
 import { useRouter } from "next/router";
 import Head from "next/head";
@@ -52,13 +52,9 @@ const Home: NextPage<Props> = (props) => {
 					<h1>Sven.</h1>
 					<p>Sofware Developer.</p>
 				</div>
-				{/* <div className="text-gray-500 italic">
-					&quot;{props.quote}&quot; - {props.quoteAuthor}
-				</div> */}
 				<div className="text-gray-800 dark:text-gray-300">
 					{props.langIntroText}
 				</div>
-				{/* <MailModal /> */}
 			</Container>
 		</>
 	);

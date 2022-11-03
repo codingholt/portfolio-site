@@ -73,7 +73,7 @@ const Protected: NextPage = (): JSX.Element => {
 				method: "POST",
 				body: formData,
 			}
-		);
+		).catch((err) => console.log(err));
 		const json = await data.json();
 		return await json.secure_url;
 	}

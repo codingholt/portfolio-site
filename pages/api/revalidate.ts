@@ -5,7 +5,11 @@ export default async function handler(
 	req: NextApiRequest,
 	res: NextApiResponse
 ) {
-	const session = await unstable_getServerSession(req, res, authOptions);
+	const session = await unstable_getServerSession(
+		req,
+		res,
+		authOptions
+	).catch((err) => console.error(err));
 
 	//Check if user is authenthicated
 	if (!session) res.status(401).json({ error: "Unauthenticated user" });
