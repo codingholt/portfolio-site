@@ -1,8 +1,10 @@
 import "../styles/globals.css";
 import type { AppProps as NextAppProps } from "next/app";
-import { themeAtom } from "../store";
+import { themeAtom, mailAtom } from "../store";
 import { useAtom } from "jotai";
 import { useEffect } from "react";
+
+import MailModal from "../components/MailModal";
 import { SessionProvider } from "next-auth/react";
 import Head from "next/head";
 type AppProps<P = any> = {
@@ -11,7 +13,7 @@ type AppProps<P = any> = {
 
 function MyApp({ Component, pageProps }: AppProps) {
 	const [theme, setTheme] = useAtom(themeAtom);
-
+	const [mailModal, setMailModal] = useAtom(mailAtom);
 	useEffect(() => {
 		if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
 			setTheme("dark");
@@ -28,6 +30,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 			<div className={theme}>
 				<div className="dark:bg-black">
 					<Component {...pageProps} />
+					{mailModal ? <MailModal /> : null}
 				</div>
 			</div>
 		</SessionProvider>

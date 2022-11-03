@@ -31,11 +31,6 @@ const Social: IPage[] = [
 		name: "Twitter",
 		link: "https://twitter.com/codingholt",
 	},
-	{
-		icon: Mail,
-		name: "email",
-		link: "mailto:contact@svennijholt.xyz",
-	},
 ];
 
 const IntroText = {
