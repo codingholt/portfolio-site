@@ -19,8 +19,8 @@ const MailModal = () => {
 				<h3 className="heading-2">Mail</h3>
 				<p>
 					Je kan een email sturen naar
-					<code className="font-mono bg-gray/30 p-1 rounded-sm shadow-sm">
-						hey@svennijholt.xyz
+					<code className="font-mono bg-gray-500/10 p-0.5 rounded-sm shadow-sm">
+						contact@svennijholt.xyz
 					</code>{" "}
 					om contact met mij op te nemen, of klik op de onderstaande
 					knop om rechtstreeks naar uw favoriete e-mailtoepassing te

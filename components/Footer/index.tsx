@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { Pages, Social } from "../../data";
 import { useRouter } from "next/router";
+import { mailAtom } from "../../store";
+import { useAtom } from "jotai";
 const ExternalLink = ({
 	href,
 	children,
@@ -21,6 +23,8 @@ const ExternalLink = ({
 export default function Footer() {
 	const router = useRouter();
 	const { pathname, asPath, query } = router;
+
+	const [mailModal, setMailModal] = useAtom(mailAtom);
 	return (
 		<footer className="flex flex-col justify-center items-center max-w-3xl  mx-auto w-full">
 			<hr className="w-full border-1 border-gray-200 dark:border-gray-800 mb-8" />
@@ -49,9 +53,14 @@ export default function Footer() {
 							</ExternalLink>
 						);
 					})}
-					{/* <span className="hover:bg-gray-100 p-2 rounded-md transition duration-200">
-						Email: contact@svennijholt.xyz
-					</span> */}
+					<div className="text-gray-500 hover:text-gray-600 transition">
+						<button
+							className="hover:bg-gray-100 p-2 rounded-md transition duration-200 "
+							onClick={() => setMailModal(true)}
+						>
+							Email
+						</button>
+					</div>
 				</div>
 				<div className="flex flex-col space-y-4 	">
 					<div
