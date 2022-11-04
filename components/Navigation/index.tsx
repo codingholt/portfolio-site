@@ -72,51 +72,53 @@ function Navigation({}: {}) {
 				</div>
 			</div>
 			{/* Mobile */}
-			<div className="xl:hidden container flex justify-end fixed inset-x-0 z-20 rounded-lg dark:bg-black/50 bg-white backdrop-blur-md	bg-opacity-0">
-				{Pages.map((page, idx) => (
-					<div key={idx}>
-						<Link href={page.link}>
-							<a>
-								<div className="hover:scale-105 duration-500 mx-2 mt-2">
+			<div className="xl:hidden container flex justify-end fixed inset-x-0 z-20 rounded-lg ">
+				<div className="flex dark:bg-black/10 rounded-lg bg-white backdrop-blur-md	bg-opacity-0 pb-2">
+					{Pages.map((page, idx) => (
+						<div key={idx}>
+							<Link href={page.link}>
+								<a>
+									<div className="hover:scale-105 duration-500 mx-2 mt-2">
+										<page.icon className="" />
+									</div>
+								</a>
+							</Link>
+						</div>
+					))}
+					<div className="divider-y h-6 mt-2 mx-2" />
+
+					{Social.map((page, idx) => (
+						<div key={idx}>
+							<a
+								target="_blank"
+								href={page.link}
+								rel="noopener noreferrer"
+							>
+								<div className="hover:scale-105 mt-2 mx-2">
 									<page.icon className="" />
 								</div>
 							</a>
-						</Link>
-					</div>
-				))}
-				<div className="divider-y h-6 mt-2 mx-2" />
+						</div>
+					))}
+					<button onClick={() => setMailModal(true)}>
+						<div className="hover:scale-105 mt-2 mx-2">
+							<Mail />
+						</div>
+					</button>
 
-				{Social.map((page, idx) => (
-					<div key={idx}>
-						<a
-							target="_blank"
-							href={page.link}
-							rel="noopener noreferrer"
-						>
-							<div className="hover:scale-105 mt-2 mx-2">
-								<page.icon className="" />
-							</div>
-						</a>
-					</div>
-				))}
-				<button onClick={() => setMailModal(true)}>
-					<div className="hover:scale-105 mt-2 mx-2">
-						<Mail />
-					</div>
-				</button>
-
-				<div className="divider-y h-6 mt-2 mx-2" />
-				{theme === "light" ? (
-					<HalfMoon
-						className="hover:scale-105 mt-2 mx-2"
-						onClick={() => setTheme("dark")}
-					/>
-				) : (
-					<SunLight
-						className="hover:scale-105 mt-2 mx-2"
-						onClick={() => setTheme("light")}
-					/>
-				)}
+					<div className="divider-y h-6 mt-2 mx-2" />
+					{theme === "light" ? (
+						<HalfMoon
+							className="hover:scale-105 mt-2 mx-2"
+							onClick={() => setTheme("dark")}
+						/>
+					) : (
+						<SunLight
+							className="hover:scale-105 mt-2 mx-2"
+							onClick={() => setTheme("light")}
+						/>
+					)}
+				</div>
 			</div>
 		</>
 	);

@@ -99,7 +99,7 @@ export default Projecten;
 export async function getStaticProps() {
 	const res = await fetch("https://www.svennijholt.nl/api/projects");
 	const resjson = await res.json();
-	console.log(resjson);
+
 	if (resjson.error) return { props: {} };
 	const projects = resjson.database_items;
 	return {
