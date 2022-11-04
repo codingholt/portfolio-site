@@ -17,27 +17,33 @@ const MailModal = () => {
                   w-full max-w-2xl h-60 backdrop-filter backdrop-blur-lg bg-opacity-80 overflow-visible rounded-2xl bg-white dark:bg-gray-800 dark:bg-opacity-50 p-6 text-left shadow-xl transition-all dark:text-white"
 			>
 				<h3 className="heading-2">Mail</h3>
-				<p>
-					Je kan een email sturen naar
-					<code className="font-mono bg-gray-500/10 p-0.5 rounded-sm shadow-sm">
-						contact@svennijholt.xyz
-					</code>{" "}
-					om contact met mij op te nemen, of klik op de onderstaande
-					knop om rechtstreeks naar uw favoriete e-mailtoepassing te
-					gaan. geen spam alsjeblieft... :){" "}
-				</p>
+				{router.locale === "nl-NL" ? (
+					<p>
+						Je kan een mail sturen naar
+						<code className="font-mono bg-gray-500/10 p-0.5 rounded-sm shadow-sm">
+							contact@svennijholt.xyz
+						</code>{" "}
+						om contact met mij op te nemen, of klik op de
+						onderstaande knop om rechtstreeks naar uw favoriete
+						e-mailtoepassing te gaan. Ik probeer zo snel mogelijk te
+						reageren{" "}
+					</p>
+				) : (
+					<p>
+						You can send an e-mail to
+						<code className="font-mono bg-gray-500/10 p-0.5 rounded-sm shadow-sm">
+							contact@svennijholt.xyz
+						</code>{" "}
+						to get in touch with me, or click the button below to go
+						directly to your favorite email application. I&apos;ll
+						try to respond as fast as possible.
+					</p>
+				)}
 				<Button
 					to="mailto:hey@svennijholt.xyz"
-					buttonText="Open Mail"
+					buttonText="Open Email"
 					extraStyle="bottom-0 mb-6"
 				/>
-
-				{/* <button
-					className="p-3 mt-4 bg-white/6 dark:bg-black rounded-md shadow-md border"
-					onClick={() => router.push("mailto:hey@svennijholt.xyz")}
-				>
-					Open Mail
-				</button> */}
 			</div>
 		</>
 	);
