@@ -7,6 +7,7 @@ specifiers:
   '@types/node': 18.7.18
   '@types/react': 18.0.20
   '@types/react-dom': 18.0.6
+  '@vercel/analytics': ^0.1.3
   '@vercel/og': ^0.0.19
   autoprefixer: ^10.4.11
   eslint: 8.23.1
@@ -29,6 +30,7 @@ dependencies:
   '@prisma/client': 4.4.0_prisma@4.4.0
   '@tailwindcss/aspect-ratio': 0.4.2_tailwindcss@3.1.8
   '@tailwindcss/line-clamp': 0.4.2_tailwindcss@3.1.8
+  '@vercel/analytics': 0.1.3_react@18.2.0
   '@vercel/og': 0.0.19
   iconoir-react: 5.3.0_react@18.2.0
   jotai: 1.8.4_react@18.2.0
@@ -422,6 +424,14 @@ packages:
       '@typescript-eslint/types': 5.37.0
       eslint-visitor-keys: 3.3.0
     dev: true
+
+  /@vercel/analytics/0.1.3_react@18.2.0:
+    resolution: {integrity: sha512-zJuEwzvi0bBmWrMrj9jvyMS+X6iUdW3m/y5P7aOLwJQKHsJyfpdINo/4Rv+wxubz3gl4nRqIQdtOFCe1P1ErXQ==}
+    peerDependencies:
+      react: ^16.8||^17||^18
+    dependencies:
+      react: 18.2.0
+    dev: false
 
   /@vercel/og/0.0.19:
     resolution: {integrity: sha512-1LrPUlCoe8T+aEI1fGdvJDhwewK1/wpYlQnF+E9ERgJMFCnmWH4FA+NYBkQaJqxUUeHoutIxNZTHQFT39+I+BQ==}
