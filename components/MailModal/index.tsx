@@ -8,7 +8,7 @@ const MailModal = () => {
 	return (
 		<>
 			<div
-				className="inset-0 fixed min-h-full h-screen items-center justify-center p-4 text-center overflow-y-auto bg-black bg-opacity-50"
+				className="inset-0 z-50 fixed min-h-full h-screen items-center justify-center p-4 text-center overflow-y-auto bg-black bg-opacity-50"
 				onClick={() => setMailModal(false)}
 			></div>
 

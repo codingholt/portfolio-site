@@ -18,7 +18,7 @@ function ProjectsEven({
 		<>
 			<div className="lg:grid hidden md:grid-cols-3 my-5 ">
 				<div
-					className="rounded-md ring-4 ml-5 ring-white dark:ring-black bg-white 
+					className="rounded-md ring-4 mr-5 ring-white dark:ring-black bg-white 
 				dark:bg-black shadow-lg dark:shadow-white/20 col-end-2 h-[450px]"
 				>
 					<span className="heading-2">{name}</span>
