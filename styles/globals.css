@@ -12,3 +12,7 @@
 		font-weight: theme("fontWeight.bold");
 	}
 }
+
+div {
+	overscroll-behavior-inline: auto;
+}

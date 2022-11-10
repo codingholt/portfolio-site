@@ -3,7 +3,7 @@ import type { AppProps as NextAppProps } from "next/app";
 import { themeAtom, mailAtom } from "../store";
 import { useAtom } from "jotai";
 import { useEffect } from "react";
-import { Analytics } from '@vercel/analytics/react';
+import { Analytics } from "@vercel/analytics/react";
 import MailModal from "../components/MailModal";
 import { SessionProvider } from "next-auth/react";
 import Head from "next/head";
@@ -23,18 +23,20 @@ function MyApp({ Component, pageProps }: AppProps) {
 	}, []);
 
 	return (
-		<SessionProvider session={pageProps.session}>
-			<Head>
-				<link href="favicon.ico" type="image/x-icon" />
-			</Head>
-			<div className={theme}>
-				<div className="dark:bg-black">
-					<Component {...pageProps} />
-					{mailModal ? <MailModal /> : null}
-					<Analytics />
+		<div>
+			<SessionProvider session={pageProps.session}>
+				<Head>
+					<link href="favicon.ico" type="image/x-icon" />
+				</Head>
+				<div className={theme}>
+					<div className="dark:bg-black">
+						<Component {...pageProps} />
+						{mailModal ? <MailModal /> : null}
+						<Analytics />
+					</div>
 				</div>
-			</div>
-		</SessionProvider>
+			</SessionProvider>
+		</div>
 	);
 }
 export default MyApp;
